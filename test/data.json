@@ -1,0 +1,17 @@
+[
+    {
+        "name": "The test map",
+        "description": "This is what is being used for testing",
+        "map":"svg-bloberoni",
+        "tags": [
+            { 
+                "location": {"x":0, "y":0, "z":0},
+                "tag": {
+                    "title": "Example tag",
+                    "description": "This is an example tag"
+                }
+            }
+        ]
+    }
+
+]
