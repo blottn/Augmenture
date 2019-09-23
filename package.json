@@ -1,0 +1,28 @@
+{
+  "name": "augmenture",
+  "version": "0.0.1",
+  "description": "Augmented Adventure builder!",
+  "main": "augture.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blottn/Augmenture.git"
+  },
+  "keywords": [
+    "augmented",
+    "adventure",
+    "builder"
+  ],
+  "author": "blottn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blottn/Augmenture/issues"
+  },
+  "homepage": "https://github.com/blottn/Augmenture#readme"
+}
