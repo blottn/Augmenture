@@ -2,12 +2,13 @@
   "name": "augmenture",
   "version": "0.0.1",
   "description": "Augmented Adventure builder!",
-  "main": "augture.js",
+  "main": "src/augture.js",
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {
+    "start":"node src/augmenture.js",
     "test": "mocha"
   },
   "repository": {
