@@ -1,12 +1,34 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
-import { listAll } from "./controller";
 
-
-const app = express();
+import CardModel from './models/card';
+import { listAll } from './controller';
 
 const port = 3000;
+const app = express();
 
 app.get('/', listAll);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+let start = () =>{
+
+    let card = new CardModel({'title': 'Hello world!', 'body': 'wow it actually works!'});
+    card.save(function (err, fluffy) {
+        if (err) return console.error(err);
+        console.log('success!');
+    });
+    CardModel.find(function (err, kittens) {
+        if (err) return console.error(err);
+        console.log(kittens);
+    });
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}!`);
+    });
+}
+
+//init db connection
+mongoose.connect('mongodb://localhost/augmenture', {useNewUrlParser: true});
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', start);
