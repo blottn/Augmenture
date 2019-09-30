@@ -8,19 +8,21 @@ import { listAll } from './controller';
 const port = 3000;
 const app = express();
 
+//configure
 app.get('/', listAll);
 
 let start = () =>{
 
     let card = new CardModel({'title': 'Hello world!', 'body': 'wow it actually works!'});
-    card.save(function (err, fluffy) {
+
+    card.save(function (err) {
         if (err) return console.error(err);
-        console.log('success!');
+        CardModel.find(function (err, cards) {
+            if (err) return console.error(err);
+            console.log(cards);
+        });
     });
-    CardModel.find(function (err, kittens) {
-        if (err) return console.error(err);
-        console.log(kittens);
-    });
+   
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);
     });
