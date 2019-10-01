@@ -3,6 +3,7 @@
         "src/**/*.ts"
     ],
     "compilerOptions": {
+        "outDir":"dist",
         "target": "es5"
     }
 }
