@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 
 import CardModel from './models/card';
+import CollectionModel from './models/collection';
 import { listAll } from './controller';
 
 const port = 3000;
@@ -13,14 +14,9 @@ app.get('/', listAll);
 
 let start = () =>{
 
-    let card = new CardModel({'title': 'Hello world!', 'body': 'wow it actually works!'});
-
-    card.save(function (err) {
+    CardModel.find(function (err, cards) {
         if (err) return console.error(err);
-        CardModel.find(function (err, cards) {
-            if (err) return console.error(err);
-            console.log(cards);
-        });
+        console.log(cards);
     });
    
     app.listen(port, () => {
