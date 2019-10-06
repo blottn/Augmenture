@@ -1,11 +1,16 @@
-const mongoose = require('mongoose');
+import {model, Schema, Document} from "mongoose";
 
-const Card = mongoose.Schema({
+export interface ICard extends Document{
+    name: String,
+    mycontents: String
+};
+
+
+export const CardSchema : Schema = new Schema({
     title: String,
     body: String
 });
 
-const CardModel = mongoose.model('Card', Card);
 
-export default CardModel;
-export const CardSchema = Card;
+export default model<ICard>('Card', CardSchema);
+

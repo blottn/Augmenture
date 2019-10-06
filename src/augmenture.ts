@@ -2,19 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 
-import CardModel from './models/card';
+import Card, {ICard} from './models/card';
 import CollectionModel from './models/collection';
 import { listAll } from './controller';
 
 const port = 3000;
 const app = express();
 
-//configure
+//configure routes
 app.get('/', listAll);
 
 let start = () =>{
 
-    CardModel.find(function (err, cards) {
+    Card.find(function (err: any, cards : ICard[]) {
         if (err) return console.error(err);
         console.log(cards);
     });
