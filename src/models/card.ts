@@ -1,8 +1,10 @@
+import {IUser} from "./user";
 import {model, Schema, Document} from "mongoose";
 
 export interface ICard extends Document{
     name: String,
-    mycontents: String
+    body: String,
+    owner: IUser['_id']
 };
 
 
