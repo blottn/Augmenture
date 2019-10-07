@@ -1,5 +1,5 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express, {Application} from 'express';
+import * as mongoose from 'mongoose';
 
 
 import Card, {ICard} from './models/card';
@@ -11,8 +11,8 @@ import {generateAPI} from './utils';
 
 generateAPI([Card, User, Collection]);
 
-const port = 3000;
-const app = express();
+const port : number = 3000;
+const app : Application = express();
 
 //configure routes
 app.get('/', listAll);
