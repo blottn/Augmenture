@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import Card, {ICard} from './models/card';
 import Collection from './models/collection';
 import User from './models/user';
-import { listAll } from './controller';
+import { index } from './controller';
 
 import {generateCRUD} from './utils';
 
@@ -13,7 +13,7 @@ const port : number = 3000;
 const app : Application = express();
 
 //configure routes
-app.get('/', listAll);
+app.get('/', index);
 
 generateCRUD(app, [Card, User, Collection]);
 
