@@ -1,10 +1,18 @@
-const mongoose = require('mongoose');
+import {model, Schema, Document} from "mongoose";
+import UserModel, {IUser} from "./user"
+import CardModel, {ICard} from "./card"
 
-import CardModel, {CardSchema} from "./card"
+export interface ICollection extends Document {
+    title: string,
+    items: ICard['_id'][],
+    owner: IUser['_id']
+};
 
-const CollectionModel = mongoose.model('Collection', {
+export const CollectionSchema : Schema = new Schema({
     title: String,
-    items: [CardSchema]
+    items: [{type: Schema.Types.ObjectId, ref: CardModel.modelName}],
+    owner: {type: Schema.Types.ObjectId, ref: UserModel.modelName}
 });
 
-export default CollectionModel;
+export default model<ICollection>('Collection', CollectionSchema)
+
