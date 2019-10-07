@@ -1,21 +1,21 @@
 import express, {Application} from 'express';
-import * as mongoose from 'mongoose';
-
+import mongoose from 'mongoose';
 
 import Card, {ICard} from './models/card';
 import Collection from './models/collection';
 import User from './models/user';
 import { listAll } from './controller';
 
-import {generateAPI} from './utils';
+import {generateCRUD} from './utils';
 
-generateAPI([Card, User, Collection]);
 
 const port : number = 3000;
 const app : Application = express();
 
 //configure routes
 app.get('/', listAll);
+
+generateCRUD(app, [Card, User, Collection]);
 
 let start = () =>{
 

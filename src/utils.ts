@@ -1,3 +1,4 @@
+import {Application, Request, Response} from "express";
 import {Model} from "mongoose";
 
 function apply(app: any, route: any) {
@@ -11,30 +12,39 @@ function applyAll(app: any, routes: Array<any>) {
     });
 }
 
-function generateCreate(model: Model<any>) {
-
+function generateCreate(app: Application, model: Model<any>, root="/api/") {
+    let route : string = root + model.modelName + '/create';
+    app.post(route, (req: Request, resp: Response) => {
+        resp.send('OK');
+    });
 }
 
-function generateDelete(model: Model<any>) {
-
+function generateRead(app: Application, model: Model<any>, root="/api/") {
+    let route : string = root + model.modelName + '/read';
+    app.get(route, (req: Request, resp: Response) => {
+        resp.send('OK');
+    });
 }
 
-function generateUpdate(model: Model<any>) {
-
+function generateUpdate(app: Application, model: Model<any>, root="/api/") {
+    let route : string = root + model.modelName + '/update';
+    app.put(route, (req: Request, resp: Response) => {
+        resp.send('OK');
+    });
 }
 
-function generateGet(model: Model<any>) {
-    
+function generateDelete(app: Application, model: Model<any>, root="/api/") {
+    let route : string = root + model.modelName + '/delete';
+    app.delete(route, (req: Request, resp: Response) => {
+        resp.send('OK');
+    });
 }
 
-
-
-
-export function generateAPI(models : Model<any>[]) {
+export function generateCRUD(app: Application, models: Model<any>[]) {
     models.map((model: Model<any>) => {
-        generateCreate(model);
-        generateDelete(model);
-        generateUpdate(model);
-        generateGet(model);
+        generateCreate(app, model);
+        generateRead(app, model);
+        generateUpdate(app, model);
+        generateDelete(app, model);
     });
 }
