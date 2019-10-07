@@ -3,8 +3,13 @@ const mongoose = require('mongoose');
 
 
 import Card, {ICard} from './models/card';
-import CollectionModel from './models/collection';
+import Collection from './models/collection';
+import User from './models/user';
 import { listAll } from './controller';
+
+import {generateAPI} from './utils';
+
+generateAPI([Card, User, Collection]);
 
 const port = 3000;
 const app = express();
