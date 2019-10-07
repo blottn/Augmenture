@@ -1,5 +1,5 @@
-import {IUser} from "./user";
 import {model, Schema, Document} from "mongoose";
+import {IUser} from "./user";
 
 export interface ICard extends Document{
     name: String,
