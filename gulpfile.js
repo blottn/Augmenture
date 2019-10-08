@@ -14,7 +14,7 @@ function build(callback) {
 
 function move(callback) {
     gulp.src(['./static/**/*'], { base: './' })
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('./dist'));
     callback();
 }
 
