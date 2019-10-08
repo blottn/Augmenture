@@ -12,6 +12,10 @@ import {generateCRUD} from './utils';
 const port : number = 3000;
 const app : Application = express();
 
+// static files
+app.use(express.static('static'));
+
+
 //configure routes
 app.get('/', index);
 
