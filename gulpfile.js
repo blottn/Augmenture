@@ -1,4 +1,4 @@
-const gulp, {series} = require('gulp');
+const gulp = require('gulp');
 const gulpTS = require('gulp-typescript')
 const project = gulpTS.createProject('tsconfig.json');
 
@@ -21,4 +21,4 @@ function move(callback) {
 exports.move = move;
 
 exports.build = build;
-exports.default = series(build, move);
+exports.default = gulp.series(build, move);
