@@ -22,12 +22,6 @@ app.get('/', index);
 generateCRUD(app, [Card, User, Collection]);
 
 let start = () =>{
-
-    Card.find(function (err: any, cards : ICard[]) {
-        if (err) return console.error(err);
-        console.log(cards);
-    });
-   
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);
     });
