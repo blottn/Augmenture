@@ -14,8 +14,8 @@ const app : Application = express();
 
 // static files
 app.use(express.static('static'));
-
-
+app.set('view engine', 'pug')
+app.set('views', './static')
 //configure routes
 app.get('/', index);
 
