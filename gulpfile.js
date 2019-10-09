@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const gulpTS = require('gulp-typescript');
 const project = gulpTS.createProject('tsconfig.json');
+const del = require('del');
 
 const outDir = 'dist';
 
@@ -9,6 +10,11 @@ function build(callback) {
         .pipe(project())
         .js
         .pipe(gulp.dest('dist'));
+    callback();
+}
+
+function clean(callback) {
+    del(['./dist/**/*']);
     callback();
 }
 
@@ -21,4 +27,5 @@ function move(callback) {
 exports.move = move;
 
 exports.build = build;
-exports.default = gulp.series(build, move);
+exports.clean = clean;
+exports.default = gulp.series(clean, build, move);
