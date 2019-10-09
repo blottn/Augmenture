@@ -1,3 +1,5 @@
+const path = require('path');
+
 import express, {Application} from 'express';
 import mongoose from 'mongoose';
 
@@ -13,13 +15,17 @@ const port : number = 3000;
 const app : Application = express();
 
 // static files
-app.use(express.static('static'));
 app.set('view engine', 'pug')
-app.set('views', './static')
-//configure routes
-app.get('/', index);
+app.set('views', './views')
 
-generateCRUD(app, [Card, User, Collection]);
+//configure routes
+//app.get('/', index);
+
+//generateCRUD(app, [Card, User, Collection]);
+
+app.use('/',express.static(path.join(__dirname, 'static')));
+
+
 
 let start = () =>{
     app.listen(port, () => {

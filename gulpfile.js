@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const gulpTS = require('gulp-typescript')
+const gulpTS = require('gulp-typescript');
 const project = gulpTS.createProject('tsconfig.json');
 
 const outDir = 'dist';
@@ -13,8 +13,8 @@ function build(callback) {
 }
 
 function move(callback) {
-    //gulp.src(['./**/*'], { base: './frontend/' })
-    //    .pipe(gulp.dest('./dist'));
+    gulp.src(['./frontend/**/*'], { base: './frontend/' })
+        .pipe(gulp.dest('./dist/'));
     callback();
 }
 
