@@ -16,10 +16,10 @@ const app : Application = express();
 
 // static files
 app.set('view engine', 'pug')
-app.set('views', './views')
+app.set('views', path.join(__dirname, './views'))
 
 //configure routes
-//app.get('/', index);
+app.get('/', index);
 
 //generateCRUD(app, [Card, User, Collection]);
 
