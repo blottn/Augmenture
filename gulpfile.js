@@ -13,8 +13,8 @@ function build(callback) {
 }
 
 function move(callback) {
-    gulp.src(['./static/**/*'], { base: './' })
-        .pipe(gulp.dest('./dist'));
+    //gulp.src(['./**/*'], { base: './frontend/' })
+    //    .pipe(gulp.dest('./dist'));
     callback();
 }
 
