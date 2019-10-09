@@ -1,11 +1,11 @@
-html
+html(style={height:'100%', 'overscroll-behavior':'none'})
     head
         include scripts.pug
         include styles.pug
         script(src='https://unpkg.com/react@16/umd/react.development.js')
         script(src='https://unpkg.com/react-dom@16/umd/react-dom.development.js')
         title= Augmenture
-    body
-        div(id="root")
-        h1 Hello
-        
+    body(style={height:'auto', 'margin':'0', 'overscroll-behavior':'none'})
+        include nav.pug
+        div#root(style={height: '100%', 'background': '#5c6470'})
+            include signup.pug
