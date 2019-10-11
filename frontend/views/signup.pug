@@ -8,16 +8,20 @@ div(style={
     form(method="post"
         action="/signup"
         style={margin: '0 auto 0',
-            'flex':'80%'
+            'flex':'0 0 80%',
+            'display':'flex',
+            'align-items':'center',
+            'justify-content':'center',
+            'flex-wrap':'wrap'
         })
-        input(type="text"
+        input.form-control(type="text"
             name="email"
             placeholder="email")
-        input(type="text"
+        input.form-control(type="text"
             name="username"
             placeholder="username")
-        input(type="password"
+        input.form-control(type="password"
             name="pw"
             placeholder="password")
-        input(type="submit"
+        input.form-control(type="submit"
             value="Create Account")
