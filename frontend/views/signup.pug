@@ -17,11 +17,15 @@ div(style={
         input.form-control.signup-input(type="text"
             name="email"
             placeholder="email")
-        input.form-control.signup-input(type="text"
+        input.form-control.signup-input.mt-2(type="text"
             name="username"
             placeholder="username")
-        input.form-control.signup-input(type="password"
+        input.form-control.signup-input.mt-2(type="password"
             name="pw"
             placeholder="password")
-        input.form-control.signup-input(type="submit"
-            value="Create Account")
+        input.form-control.signup-submit.btn.btn-success.mt-2(type="submit"
+            value="Create Account"
+            style={
+                'box-shadow':'none',
+                'background-color':'#0066ff'
+            })

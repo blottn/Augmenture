@@ -1,9 +1,17 @@
 .signup-input {
-    margin-top: 8px;
-    box-shadow: 10px 5px 2px #80808088;
+    box-shadow: 5px 5px 2px #80808088;
+}
+
+.signup-submit {
+    border-color: #0066ff;
+}
+
+.signup-submit:hover {
+    border-color: #46d267;
 }
 
 .adjective {
     color: lightgreen;
     font-size: x-large;
 }
+
