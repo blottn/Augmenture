@@ -1,15 +1,23 @@
-form(method="post"
-    action="/signup"
-    style={margin: '0 auto 0', width: '80%'}
-    )
-    input(type="text"
-        name="email"
-        placeholder="email")
-    input(type="text"
-        name="username"
-        placeholder="username")
-    input(type="password"
-        name="pw"
-        placeholder="password")
-    input(type="submit"
-        value="Create Account")
+div(style={
+    'height':'100%',
+    'display':'flex',
+    'flex-wrap':'wrap',
+    'justify-content':'center',
+    'align-items':'center'
+})
+    form(method="post"
+        action="/signup"
+        style={margin: '0 auto 0',
+            'flex':'80%'
+        })
+        input(type="text"
+            name="email"
+            placeholder="email")
+        input(type="text"
+            name="username"
+            placeholder="username")
+        input(type="password"
+            name="pw"
+            placeholder="password")
+        input(type="submit"
+            value="Create Account")
