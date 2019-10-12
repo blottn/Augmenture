@@ -6,6 +6,8 @@ html(style={height:'100%', 'overscroll-behavior':'none'})
         script(src='https://unpkg.com/react-dom@16/umd/react-dom.development.js')
         title= Augmenture
     body(style={height:'auto', 'margin':'0', 'overscroll-behavior':'none'})
-        include nav.pug
-        div#root(style={height: '100%', 'background': '#5c6470'})
-            include signup.pug
+        div#root(style={height: '100%', 'display':'flex', 'flex-wrap':'wrap'})
+            div(style={'flex': '1 0'})
+                include banner.pug
+            div(style={'flex': '1 0', 'background': '#99006b'})
+                include signup.pug
