@@ -22,11 +22,10 @@ const adjectives = [
 
 function newAdjective() {
     let index = Math.floor(Math.random() * adjectives.length)
-    $(".adjective").text(adjectives[index] + " ");
+    $('.adjective').text(adjectives[index] + ' ');
     setTimeout(newAdjective,3000);
 }
 
 $(document).ready(() => {
-        
     newAdjective();
 });
