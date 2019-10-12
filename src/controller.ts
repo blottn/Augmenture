@@ -16,9 +16,6 @@ export async function signup(req: Request, res: Response) {
     let email = req.body.email;
     let uname = req.body.username;
     let pass = req.body.pw;
-    console.log(email);
-    console.log(uname);
-    console.log(pass);
 
     UserModel.findOne({'uname': uname}, (err, user) => {
         if (user) {
@@ -34,7 +31,6 @@ export async function signup(req: Request, res: Response) {
                 let token = jwt.sign({uname: uname}, "greatsecret", {
                     expiresIn: "24h"
                 });
-                console.log('token ' + token);
                 res.status(201)
                     .cookie('access_token', token)
                     .redirect(301, '/home');
@@ -45,6 +41,5 @@ export async function signup(req: Request, res: Response) {
 }
 
 export async function home(req: TokenRequest, res: Response) {
-    console.log(req.token);
     res.send('home');
 }
