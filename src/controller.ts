@@ -2,6 +2,7 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 
 import {TokenRequest} from './types';
+import {validateEmail} from './utils';
 
 import UserModel from './models/user';
 import CardModel from './models/card';
@@ -13,14 +14,28 @@ export async function index(req: Request, res: Response) {
 }
 
 export async function signup(req: Request, res: Response) {
-    let email = req.body.email;
-    let uname = req.body.username;
-    let pass = req.body.pw;
+    console.log(req.body);
+    let email : string = req.body.email;
+    let uname : string = req.body.uname;
+    let pass : string = req.body.pw;
+    // validate password
+    if ((!pass) || pass.length < 8) {
+        res.status(400)
+            .end();
+        return;
+    }
 
-    UserModel.findOne({'uname': uname}, (err, user) => {
+    // validate email
+    if (!validateEmail(email)) {
+        res.status(400)
+            .end();
+        return;
+    }
+
+    UserModel.findOne({'uname': uname}, (err, user: IUser) => {
         if (user) {
             res.status(409)
-                .end();
+                .send(uname + ' already in use');
         }
         else {
             UserModel.create({
@@ -28,15 +43,14 @@ export async function signup(req: Request, res: Response) {
                 email: email,
                 secret: pass,
             }, () => {
+                //success
                 let token = jwt.sign({uname: uname}, "greatsecret", {
                     expiresIn: "24h"
                 });
                 res.status(201)
-                    .cookie('access_token', token)
-                    .redirect(301, '/home');
+                    .send({'access_token': token})
             });
         }
-
     });
 }
 

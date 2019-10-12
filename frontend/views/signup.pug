@@ -1,31 +1,43 @@
 div(style={
     'height':'100%',
+    'width':'80%',
+    'margin':'auto',
     'display':'flex',
     'flex-wrap':'wrap',
     'justify-content':'center',
-    'align-items':'center'
+    'align-items':'center',
+    'flex-direction': 'column'
 })
-    form(method="post"
+    form#signup-form(method="post"
         action="/signup"
         style={margin: '0 auto 0',
-            'flex':'0 0 80%',
+            'flex':'0',
             'display':'flex',
             'align-items':'center',
             'justify-content':'center',
-            'flex-wrap':'wrap'
+            'flex-wrap':'wrap',
         })
-        input.form-control.signup-input(type="text"
+        input.form-control.signup-input#signup-email(type="text"
             name="email"
             placeholder="email")
-        input.form-control.signup-input.mt-2(type="text"
+        input.form-control.signup-input.mt-2#signup-uname(type="text"
             name="username"
             placeholder="username")
-        input.form-control.signup-input.mt-2(type="password"
+        input.form-control.signup-input.mt-2#signup-pw(type="password"
             name="pw"
             placeholder="password")
-        input.form-control.signup-submit.btn.btn-success.mt-2(type="submit"
+        input.form-control.signup-submit.btn.btn-success.mt-2#signup-submit(type="submit"
             value="Create Account"
             style={
                 'box-shadow':'none',
                 'background-color':'#0066ff'
             })
+    div.mt-2.text-danger#signup-validation-msg(style={width:'0%',
+        'height':'24px',
+        'overflow':'hidden',
+        'border-radius': '4px',
+        'background-color': 'white',
+        'text-align':'center',
+        'transition':'width 0.5s'
+        }) Error:
+
