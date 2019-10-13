@@ -12,6 +12,32 @@ function applyAll(app: any, routes: Array<any>) {
     });
 }
 
+export function validateEmail(email : String) : boolean {
+    if (!email) {
+        return false;
+    }
+
+    let parts : string[] = email.split('@');
+    if ((parts.length != 2) || (!parts[1])) {
+        return false;
+    }
+
+    let domain : string = parts[1];
+    if ((!domain)) {
+        return false;
+    }
+
+    let domainParts : string[] = domain.split('.');
+    if ((domainParts.length != 2)
+        || (!domainParts[0])
+        || (!domainParts[1])) {
+        return false;
+    }
+
+    return true;
+}
+
+// CRUD gen
 function generateCreate(app: Application, model: Model<any>, root="/api/") {
     let route : string = root + model.modelName + '/create';
     app.post(route, (req: Request, resp: Response) => {
