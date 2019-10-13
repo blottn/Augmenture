@@ -41,8 +41,9 @@ function signup(evt) {
             'pw': pw,
             'uname': uname
         },
-        success: () => {
-            console.log('success');
+        success: (data) => {
+            document.cookie = 'access_token=' + data.access_token;
+            window.location.assign('/home');
         },
         error: (_, status, httpMsg) => {
             $('#signup-validation-msg')
