@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 import {TokenRequest} from './types';
 import {validateEmail} from './utils';
 
-import UserModel from './models/user';
+import UserModel, { IUser } from './models/user';
 import CardModel from './models/card';
 
 import { Request, Response } from "express";
