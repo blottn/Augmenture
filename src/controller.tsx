@@ -1,16 +1,22 @@
 const path = require('path');
 const jwt = require('jsonwebtoken');
 
+const ReactDOMServer = require('react-dom/server');
+import React from 'react';
+
+import { Request, Response } from "express";
+
+import { Index } from './frontend/index';
+
 import {TokenRequest} from './types';
 import {validateEmail} from './utils';
 
 import UserModel, { IUser } from './models/user';
 import CardModel from './models/card';
 
-import { Request, Response } from "express";
 
 export async function index(req: Request, res: Response) {
-    res.render('index', { message: 'Hello there!' })
+    res.send(ReactDOMServer.renderToString(<Index />));
 }
 
 export async function signup(req: Request, res: Response) {
