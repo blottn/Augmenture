@@ -1,11 +1,13 @@
 {
-    "files": [
-        "src/*.ts",
-        "src/**/*.ts"
+    "include": [
+        "./src/*.ts",
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
     ],
     "compilerOptions": {
         "outDir":"dist",
         "target": "es5",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "jsx": "react"
     }
 }
