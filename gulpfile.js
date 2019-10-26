@@ -1,5 +1,8 @@
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config');
 const gulp = require('gulp');
 const gulpTS = require('gulp-typescript');
+const gulpBabel = require('gulp-babel');
 const project = gulpTS.createProject('tsconfig.json');
 const del = require('del');
 
@@ -13,19 +16,55 @@ function build(callback) {
     callback();
 }
 
+function bundle(callback) {
+    var fs = require('fs');
+    var files = fs.readdirSync('./dist/');
+    webpack(webpackConfig, (err, stats) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            callback();
+        }
+    });
+}
+
 function clean(callback) {
     del(['./dist/**/*']);
     callback();
 }
 
-function move(callback) {
-    gulp.src(['./frontend/**/*'], { base: './frontend/' })
+function views(callback) {
+    gulp.src('./frontend/views/**/*', { base: './frontend/' })
         .pipe(gulp.dest('./dist/'));
     callback();
 }
 
-exports.move = move;
+function css(callback) {
+    gulp.src('./src/**/*.css', {base: './src/' })
+        .pipe(gulp.dest('./dist/'));
+    callback();
+}
 
+function static_files(callback) {
+    gulp.src('./frontend/static/**/*', { base: './frontend/' })
+        .pipe(gulp.dest('./dist/'));
+    callback();
+}
+
+function frontend(callback) {
+    const babel = {
+        presets: ['@babel/preset-react', '@babel/preset-env']
+    };
+    gulp.src('./frontend/static/app/**/*.jsx', { base: './frontend/' })
+        .pipe(gulpBabel(babel))
+        .pipe(gulp.dest('./dist/'));
+    callback();
+}
+
+exports.views = views;
+exports.bundle = bundle;
+exports.css = css;
 exports.build = build;
 exports.clean = clean;
-exports.default = gulp.series(clean, build, move);
+exports.default = gulp.series(clean, build, css, bundle);

@@ -17,7 +17,7 @@ const port : number = 3000;
 const app : Application = express();
 
 // static files
-app.use('/static',express.static(path.join(__dirname, 'static')));
+app.use('/static',express.static(path.join(__dirname, './static')));
 app.use(bearertoken({
     cookie: {
         key: 'access_token'
@@ -28,8 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // views
-app.set('view engine', 'pug')
-app.set('views', path.join(__dirname, './views'))
+//app.set('view engine', 'pug')
+//app.set('views', path.join(__dirname, './views'))
 
 //configure routes
 app.get('/', index);
