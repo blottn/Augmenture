@@ -1,9 +1,7 @@
-import * as index from './index';
-import * as header from './header';
-import * as clicker from './clicker';
+import * as index from './index.tsx';
+import * as header from './header.tsx';
 
 export default {
-    'index': index,
-    'header': header,
-    'clicker': clicker
+    index,
+    header,
 };
