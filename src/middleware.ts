@@ -1,22 +1,18 @@
-const jwt = require('jsonwebtoken');
-
-import { TokenRequest } from './types';
-
+import * as jwt from 'jsonwebtoken';
 import { Response } from 'express';
 
-export function decodeToken(req : TokenRequest, res: Response, next) {
-    if (! req.token) {
+import { TokenRequest } from './types.ts';
+
+export default function (req: TokenRequest, res: Response, next): void {
+    if (!req.token) {
         res.status(401)
             .end();
-    }
-    else {
+    } else {
         try {
-            let decoded = jwt.verify(req.token, 'greatsecret');
+            const decoded = jwt.verify(req.token, 'greatsecret');
             req.token = decoded;
             next();
-        }
-        catch (err) {
-            console.log(err);
+        } catch (err) {
             res.status(401)
                 .end();
         }
