@@ -1,55 +1,51 @@
-const path = require('path');
-const bearertoken = require('express-bearer-token');
-const jwt = require('jsonwebtoken');
+import path from 'path';
+import bearertoken from 'express-bearer-token';
 
-import express, {Application} from 'express';
+import express, { Application } from 'express';
 import mongoose from 'mongoose';
 
-import Card, {ICard} from './models/card';
-import Collection from './models/collection';
-import User from './models/user';
-import { index, signup, home } from './controller';
-import { generateCRUD } from './utils';
-import { TokenRequest } from './types';
-import { decodeToken } from './middleware';
+import cardModel from './models/card.ts';
+import Collection from './models/collection.ts';
+import User from './models/user.ts';
+import { index, signup, home } from './controller.tsx';
+import { generateCRUD } from './utils.ts';
+// import { TokenRequest } from './types.ts';
+import { decodeToken } from './middleware.ts';
 
-const port : number = 3000;
-const app : Application = express();
+const port = 3000;
+const app: Application = express();
 
 // static files
-app.use('/static',express.static(path.join(__dirname, './static')));
+app.use('/static', express.static(path.join(__dirname, './static')));
 app.use(bearertoken({
     cookie: {
-        key: 'access_token'
-    }
+        key: 'access_token',
+    },
 }));
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // views
-//app.set('view engine', 'pug')
-//app.set('views', path.join(__dirname, './views'))
+// app.set('view engine', 'pug')
+// app.set('views', path.join(__dirname, './views'))
 
-//configure routes
+// configure routes
 app.get('/', index);
 app.get('/home', decodeToken, home);
 app.post('/signup', signup);
 
-generateCRUD(app, [Card, User, Collection]);
+generateCRUD(app, [cardModel, User, Collection]);
 
-
-
-
-let start = () =>{
+function start(): void {
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);
     });
 }
 
-//init db connection
-mongoose.connect('mongodb://localhost/augmenture', {useNewUrlParser: true});
+// init db connection
+mongoose.connect('mongodb://localhost/augmenture', { useNewUrlParser: true });
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', start);
