@@ -1,34 +1,23 @@
-import express, {Application, Request, Response} from "express";
-import {Model} from "mongoose";
+import { Application, Request, Response } from 'express';
+import { Model } from 'mongoose';
 
-function apply(app: any, route: any) {
-    app[route.kind](route.handler);
-}
-
-
-function applyAll(app: any, routes: Array<any>) {
-    routes.map((route) => {
-        app[route.kind](route.handler);
-    });
-}
-
-export function validateEmail(email : String) : boolean {
+export function validateEmail(email: string): boolean {
     if (!email) {
         return false;
     }
 
-    let parts : string[] = email.split('@');
-    if ((parts.length != 2) || (!parts[1])) {
+    const parts: string[] = email.split('@');
+    if ((parts.length !== 2) || (!parts[1])) {
         return false;
     }
 
-    let domain : string = parts[1];
+    const domain: string = parts[1];
     if ((!domain)) {
         return false;
     }
 
-    let domainParts : string[] = domain.split('.');
-    if ((domainParts.length != 2)
+    const domainParts: string[] = domain.split('.');
+    if ((domainParts.length !== 2)
         || (!domainParts[0])
         || (!domainParts[1])) {
         return false;
@@ -38,39 +27,40 @@ export function validateEmail(email : String) : boolean {
 }
 
 // CRUD gen
-function generateCreate(app: Application, model: Model<any>, root="/api/") {
-    let route : string = root + model.modelName + '/create';
+function generateCreate(app: Application, model: Model, root = '/api/'): void {
+    const route = `${root}${model.modelName}/create`;
     app.post(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-function generateRead(app: Application, model: Model<any>, root="/api/") {
-    let route : string = root + model.modelName + '/read';
+function generateRead(app: Application, model: Model, root = '/api/'): void {
+    const route = `${root}${model.modelName}/read`;
     app.get(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-function generateUpdate(app: Application, model: Model<any>, root="/api/") {
-    let route : string = root + model.modelName + '/update';
+function generateUpdate(app: Application, model: Model, root = '/api/'): void {
+    const route = `${root}${model.modelName}/update`;
     app.put(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-function generateDelete(app: Application, model: Model<any>, root="/api/") {
-    let route : string = root + model.modelName + '/delete';
+function generateDelete(app: Application, model: Model, root = '/api/'): void {
+    const route = `${root}${model.modelName}/delete`;
     app.delete(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-export function generateCRUD(app: Application, models: Model<any>[]) {
-    models.map((model: Model<any>) => {
+export function generateCRUD(app: Application, models: Model[]): void {
+    models.map((model: Model) => {
         generateCreate(app, model);
         generateRead(app, model);
         generateUpdate(app, model);
         generateDelete(app, model);
+        return model;
     });
 }
