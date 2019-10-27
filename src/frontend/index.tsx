@@ -1,25 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 
-import { Header } from './header';
-import { Banner, Signup } from './signup';
-import { Clicker } from './clicker';
+import { Header } from './header.tsx';
+import { Banner, Signup } from './signup.tsx';
 
-export class Index extends React.Component {
-
-    render() {
-        return (
-            <html>
-                <head>
-                    <Header/>
-                    <title>Augmenture</title>
-                </head>
-                <body className="root">
-                    <div id="root" className="flex fill">
-                        <Banner/>
-                        <Signup/>
-                    </div>
-                </body>
-            </html>
-        );
-    }
-}
+export default (): React.Component => (
+    <html lang="en">
+        <head>
+            <Header />
+            <title>Augmenture</title>
+        </head>
+        <body className="root">
+            <div id="root" className="flex fill">
+                <Banner />
+                <Signup />
+            </div>
+        </body>
+    </html>
+);
