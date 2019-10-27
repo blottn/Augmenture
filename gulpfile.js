@@ -10,7 +10,7 @@ const del = require('del');
 const outDir = 'dist';
 
 function lint(callback) {
-    gulp.src('./src/**/*')
+    gulp.src(['./src/**/*.ts', './src/**/*.tsx', './src/**/*.js'])
         .pipe(gulpESLint('./.eslintrc.json'))
         .pipe(gulpESLint.format())
         .pipe(gulpESLint.failAfterError());
