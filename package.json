@@ -33,6 +33,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-eslint": "^6.0.0",
     "gulp-tslint": "^8.1.4",
     "gulp-typescript": "^5.0.1",
     "ts-loader": "^6.2.1",

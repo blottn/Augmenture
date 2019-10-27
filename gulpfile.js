@@ -3,10 +3,19 @@ const webpackConfig = require('./webpack.config');
 const gulp = require('gulp');
 const gulpTS = require('gulp-typescript');
 const gulpBabel = require('gulp-babel');
+const gulpESLint = require('gulp-eslint');
 const project = gulpTS.createProject('tsconfig.json');
 const del = require('del');
 
 const outDir = 'dist';
+
+function lint(callback) {
+    gulp.src('./src/**/*')
+        .pipe(gulpESLint('./.eslintrc.json'))
+        .pipe(gulpESLint.format())
+        .pipe(gulpESLint.failAfterError());
+    callback();
+}
 
 function build(callback) {
     project.src()
@@ -62,6 +71,7 @@ function frontend(callback) {
     callback();
 }
 
+exports.lint = lint;
 exports.views = views;
 exports.bundle = bundle;
 exports.css = css;
