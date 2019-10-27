@@ -1,12 +1,11 @@
 {
     "parser":  "@typescript-eslint/parser",
-    "extends": "plugin:@typescript-eslint/recommended",
+    "extends": ["plugin:@typescript-eslint/recommended", "airbnb"],
     "env": {
         "browser": true,
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
