@@ -1,18 +1,17 @@
-import {model, Schema, Document} from "mongoose";
-import {IUser} from "./user";
+import { model, Schema, Document } from 'mongoose';
+import { User } from './user.ts';
 
-export interface ICard extends Document{
-    name: String,
-    body: String,
-    owner: IUser['_id']
-};
+export interface Card extends Document{
+    name: string;
+    body: string;
+    owner: User['_id'];
+}
 
 
-export const CardSchema : Schema = new Schema({
+export const CardSchema: Schema = new Schema({
     title: String,
-    body: String
+    body: String,
 });
 
 
-export default model<ICard>('Card', CardSchema);
-
+export default model<Card>('Card', CardSchema);
