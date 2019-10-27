@@ -1,18 +1,17 @@
-import {model, Schema, Document} from "mongoose";
-import UserModel, {IUser} from "./user"
-import CardModel, {ICard} from "./card"
+import { model, Schema, Document } from 'mongoose';
+import UserModel, { User } from './user.ts';
+import CardModel, { Card } from './card.ts';
 
-export interface ICollection extends Document {
-    title: string,
-    items: ICard['_id'][],
-    owner: IUser['_id']
-};
+export interface Collection extends Document {
+    title: string;
+    items: Card['_id'][];
+    owner: User['_id'];
+}
 
-export const CollectionSchema : Schema = new Schema({
+export const CollectionSchema: Schema = new Schema({
     title: String,
-    items: [{type: Schema.Types.ObjectId, ref: CardModel.modelName}],
-    owner: {type: Schema.Types.ObjectId, ref: UserModel.modelName}
+    items: [{ type: Schema.Types.ObjectId, ref: CardModel.modelName }],
+    owner: { type: Schema.Types.ObjectId, ref: UserModel.modelName },
 });
 
-export default model<ICollection>('Collection', CollectionSchema)
-
+export default model<Collection>('Collection', CollectionSchema);
