@@ -1,5 +1,5 @@
-import * as index from './index.tsx';
-import * as header from './header.tsx';
+import * as index from './index';
+import * as header from './header';
 
 export default {
     index,

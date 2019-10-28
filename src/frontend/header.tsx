@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default (): React.Component => (
+export default (): JSX.Element => (
     <>
         {/* css */}
         {/* bootstrap */}

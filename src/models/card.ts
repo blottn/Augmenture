@@ -1,5 +1,5 @@
 import { model, Schema, Document } from 'mongoose';
-import { User } from './user.ts';
+import { User } from './user';
 
 export interface Card extends Document{
     name: string;

@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import { Response } from 'express';
 
-import { TokenRequest } from './types.ts';
+import { TokenRequest } from './types';
 
 export default function (req: TokenRequest, res: Response, next): void {
     if (!req.token) {

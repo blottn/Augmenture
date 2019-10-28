@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const Banner: React.Component = () => (
+export const Banner = (): JSX.Element => (
     <div className="flex-balance">
         <div className="fill flex flex-wrap banner">
             <div>
@@ -18,4 +18,4 @@ export const Banner: React.Component = () => (
 );
 
 
-export const Signup: React.Component = () => <div className="flex-balance purple">Signup</div>;
+export const Signup = (): JSX.Element => <div className="flex-balance purple">Signup</div>;

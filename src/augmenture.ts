@@ -4,13 +4,13 @@ import bearertoken from 'express-bearer-token';
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
 
-import cardModel from './models/card.ts';
-import Collection from './models/collection.ts';
-import User from './models/user.ts';
-import { index, signup, home } from './controller.tsx';
-import { generateCRUD } from './utils.ts';
+import cardModel from './models/card';
+import Collection from './models/collection';
+import User from './models/user';
+import { index, signup, home } from './controller';
+import { generateCRUD } from './utils';
 // import { TokenRequest } from './types.ts';
-import { decodeToken } from './middleware.ts';
+import decodeToken from './middleware';
 
 const port = 3000;
 const app: Application = express();
@@ -19,6 +19,8 @@ const app: Application = express();
 app.use('/static', express.static(path.join(__dirname, './static')));
 app.use(bearertoken({
     cookie: {
+        signed: false,
+        secret: 'greatsecret',
         key: 'access_token',
     },
 }));

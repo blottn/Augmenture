@@ -1,6 +1,6 @@
 import { model, Schema, Document } from 'mongoose';
-import UserModel, { User } from './user.ts';
-import CardModel, { Card } from './card.ts';
+import UserModel, { User } from './user';
+import CardModel, { Card } from './card';
 
 export interface Collection extends Document {
     title: string;

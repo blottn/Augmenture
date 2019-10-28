@@ -27,36 +27,36 @@ export function validateEmail(email: string): boolean {
 }
 
 // CRUD gen
-function generateCreate(app: Application, model: Model, root = '/api/'): void {
+function generateCreate(app: Application, model: Model<any>, root = '/api/'): void {
     const route = `${root}${model.modelName}/create`;
     app.post(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-function generateRead(app: Application, model: Model, root = '/api/'): void {
+function generateRead(app: Application, model: Model<any>, root = '/api/'): void {
     const route = `${root}${model.modelName}/read`;
     app.get(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-function generateUpdate(app: Application, model: Model, root = '/api/'): void {
+function generateUpdate(app: Application, model: Model<any>, root = '/api/'): void {
     const route = `${root}${model.modelName}/update`;
     app.put(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-function generateDelete(app: Application, model: Model, root = '/api/'): void {
+function generateDelete(app: Application, model: Model<any>, root = '/api/'): void {
     const route = `${root}${model.modelName}/delete`;
     app.delete(route, (req: Request, resp: Response) => {
         resp.send('OK');
     });
 }
 
-export function generateCRUD(app: Application, models: Model[]): void {
-    models.map((model: Model) => {
+export function generateCRUD(app: Application, models: Model<any>[]): void {
+    models.map((model: Model<any>) => {
         generateCreate(app, model);
         generateRead(app, model);
         generateUpdate(app, model);

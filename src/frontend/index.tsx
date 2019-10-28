@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { Header } from './header.tsx';
-import { Banner, Signup } from './signup.tsx';
+import Header from './header';
+import { Banner, Signup } from './signup';
 
-export default (): React.Component => (
+export default (): JSX.Element => (
     <html lang="en">
         <head>
             <Header />
