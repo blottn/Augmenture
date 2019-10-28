@@ -2,6 +2,12 @@ import * as React from 'react';
 
 export default (): JSX.Element => (
     <>
+        {/* favicon */}
+        <link
+            rel="icon"
+            type="image/png"
+            href="http://localhost:3000/static/augmenture.png"
+        />
         {/* css */}
         {/* bootstrap */}
         <link

@@ -53,9 +53,15 @@ function css(callback) {
     callback();
 }
 
+function resources(callback) {
+    gulp.src(['./src/static/*.png'], {base: './src/' })
+        .pipe(gulp.dest('./dist/'));
+    callback();
+}
 exports.lint = lint;
 exports.bundle = bundle;
 exports.css = css;
 exports.build = build;
 exports.clean = clean;
-exports.default = gulp.series(clean, lint, build, css, bundle);
+exports.resources = resources;
+exports.default = gulp.series(clean, lint, build, css, bundle, resources);
