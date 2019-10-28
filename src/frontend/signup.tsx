@@ -17,7 +17,7 @@ export const Banner = (): JSX.Element => (
 
 
 export const Signup = (): JSX.Element => (
-    <form className="flex flex-column card">
+    <form className="flex flex-column card signup-card">
         <h4>Signup</h4>
         <hr />
         <input className="form-control my-1" placeholder="display name" type="text" name="uname" />
