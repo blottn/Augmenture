@@ -18,9 +18,11 @@ export const Banner = (): JSX.Element => (
 
 export const Signup = (): JSX.Element => (
     <form className="flex flex-column card">
-        <input className="form-control" placeholder="display name" type="text" name="uname" />
-        <input className="form-control" placeholder="email" type="email" name="emai" />
-        <input className="form-control" placeholder="password" type="password" name="pw" />
-        <input className="form-control" type="submit" />
+        <h4>Signup</h4>
+        <hr />
+        <input className="form-control my-1" placeholder="display name" type="text" name="uname" />
+        <input className="form-control my-1" placeholder="email" type="email" name="emai" />
+        <input className="form-control my-1" placeholder="password" type="password" name="pw" />
+        <input className="btn btn-primary my-2" type="submit" />
     </form>
 );
