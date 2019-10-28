@@ -11,8 +11,12 @@ export default (): JSX.Element => (
         </head>
         <body className="root">
             <div id="root" className="flex fill">
-                <Banner />
-                <Signup />
+                <div className="flex-balance">
+                    <Banner />
+                </div>
+                <div className="flex flex-balance flex-center purple">
+                    <Signup />
+                </div>
             </div>
         </body>
     </html>

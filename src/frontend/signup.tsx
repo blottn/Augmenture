@@ -1,21 +1,26 @@
 import * as React from 'react';
 
 export const Banner = (): JSX.Element => (
-    <div className="flex-balance">
-        <div className="fill flex flex-wrap banner">
-            <div>
-                <h1>Augmenture</h1>
-                <p>
-                    <strong>
-                        Create
-                        <span className="adjective"> amazing </span>
-                        D&D campaign Notes!
-                    </strong>
-                </p>
-            </div>
+    <div className="fill flex flex-wrap banner">
+        <div>
+            <h1>Augmenture</h1>
+            <p>
+                <strong>
+                    Create
+                    <span className="adjective"> amazing </span>
+                    D&D campaign Notes!
+                </strong>
+            </p>
         </div>
     </div>
 );
 
 
-export const Signup = (): JSX.Element => <div className="flex-balance purple">Signup</div>;
+export const Signup = (): JSX.Element => (
+    <form className="flex flex-column card">
+        <input className="form-control" placeholder="display name" type="text" name="uname" />
+        <input className="form-control" placeholder="email" type="email" name="emai" />
+        <input className="form-control" placeholder="password" type="password" name="pw" />
+        <input className="form-control" type="submit" />
+    </form>
+);

@@ -17,8 +17,23 @@
     flex: 1 0;
 }
 
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
 .flex-nowrap {
     flex-wrap: nowrap;
+}
+
+.card {
+    background: white;
+    border: 40px solid white;
+    border-radius: 8px;
 }
 
 .purple {
