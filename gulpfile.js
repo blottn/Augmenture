@@ -77,4 +77,4 @@ exports.bundle = bundle;
 exports.css = css;
 exports.build = build;
 exports.clean = clean;
-exports.default = gulp.series(clean, build, css, bundle);
+exports.default = gulp.series(clean, lint, build, css, bundle);
