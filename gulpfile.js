@@ -4,10 +4,13 @@ const gulp = require('gulp');
 const gulpTS = require('gulp-typescript');
 const gulpBabel = require('gulp-babel');
 const gulpESLint = require('gulp-eslint');
+const gulpSass = require('gulp-sass');
 const project = gulpTS.createProject('tsconfig.json');
 const del = require('del');
 
 const outDir = 'dist';
+gulpSass.compiler = require('node-sass');
+
 
 function lint(callback) {
     gulp.src(['./src/**/*.ts', './src/**/*.tsx', './src/**/*.js'])
@@ -43,36 +46,14 @@ function clean(callback) {
     callback();
 }
 
-function views(callback) {
-    gulp.src('./frontend/views/**/*', { base: './frontend/' })
-        .pipe(gulp.dest('./dist/'));
-    callback();
-}
-
 function css(callback) {
-    gulp.src('./src/**/*.css', {base: './src/' })
-        .pipe(gulp.dest('./dist/'));
-    callback();
-}
-
-function static_files(callback) {
-    gulp.src('./frontend/static/**/*', { base: './frontend/' })
-        .pipe(gulp.dest('./dist/'));
-    callback();
-}
-
-function frontend(callback) {
-    const babel = {
-        presets: ['@babel/preset-react', '@babel/preset-env']
-    };
-    gulp.src('./frontend/static/app/**/*.jsx', { base: './frontend/' })
-        .pipe(gulpBabel(babel))
+    gulp.src(['./src/**/*.scss'], {base: './src/' })
+        .pipe(gulpSass().on('error', gulpSass.logError))
         .pipe(gulp.dest('./dist/'));
     callback();
 }
 
 exports.lint = lint;
-exports.views = views;
 exports.bundle = bundle;
 exports.css = css;
 exports.build = build;
