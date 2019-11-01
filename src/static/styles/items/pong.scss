@@ -1,0 +1,79 @@
+$bar-pong-width: 38%;
+$ball-pong-width: 3.5%;
+$pong-height: 100px;
+$paddle-height: 46%;
+
+.pong {
+    &-holder {
+        height: 100px;
+        justify-content: space-between;
+        align-items: center
+    }
+
+    &-paddle-track {
+        width: 10px;
+        height: $pong-height;
+    }
+
+    &-paddle {
+        height: $paddle-height;
+        background:black;
+        border-radius: 5px;
+        position: relative;
+        animation: paddleAnimation 1.25s infinite linear;
+
+        &-offset {
+            @extend .pong-paddle;
+            animation: paddleAnimationOffset 5s infinite linear;
+        }
+    }
+
+    &-ball {
+        width: $ball-pong-width;
+        height: 100%;
+        background: grey;
+        border-radius: 5px;
+        visibility: visible;
+        position: relative;
+        animation: slidehorizontal 2.5s infinite alternate linear, slidevertical 1s infinite linear;
+    }
+
+    &-track {
+        visibility: hidden;
+        height: 10px;
+        background: #eee;
+        border-radius: 4px;
+        margin: 0px 4px;
+    }
+}
+
+@keyframes paddleAnimation {
+    0% { margin-top: 0%; }
+    25% { margin-top: ($pong-height / 2) - 23px; }
+    50% { margin-top: $pong-height - 46px; }
+    75% { margin-top: ($pong-height / 2) - 23px; }
+    100% { margin-top: 0%; }
+}
+    
+
+@keyframes paddleAnimationOffset {
+    0% { margin-top: ($pong-height / 2) - 23px; }
+    25% { margin-top: $pong-height - 46px; }
+    50% { margin-top: ($pong-height / 2) - 23px; }
+    75% { margin-top: 0%; }
+    100% { margin-top: ($pong-height / 2) - 23px; }
+}
+
+@keyframes slidehorizontal {
+    from { left: 0%; }
+    to { left: 100% - $ball-pong-width;}
+}
+
+@keyframes slidevertical {
+    0% { bottom: 0px; }
+    25% { bottom: -($pong-height / 2) + 5px; }
+    50% { bottom: 0px; }
+    75% { bottom: ($pong-height / 2) - 5px; }
+    100% { bottom: 0px; }
+
+}

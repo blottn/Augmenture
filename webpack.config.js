@@ -19,7 +19,7 @@ module.exports = {
     },
     output:  { 
         filename: 'bundle.js',
-        libraryTarget: 'window',
+        library: 'augmenture',
         path: path.resolve(__dirname, 'dist/static'),
     }
 };

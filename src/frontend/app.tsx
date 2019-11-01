@@ -1,7 +1,10 @@
-import * as index from './index';
-import * as header from './header';
+import * as Index from './index';
+import * as Header from './header';
+import { Banner, Signup } from './signup';
 
 export default {
-    index,
-    header,
+    Index,
+    Header,
+    Banner,
+    Signup,
 };
