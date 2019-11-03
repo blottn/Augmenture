@@ -84,7 +84,7 @@ $paddle-height: 46%;
 
         &-hidden {
             @extend .pong-track;
-            visibility: invisible;
+            visibility: hidden;
         }
     }
 }

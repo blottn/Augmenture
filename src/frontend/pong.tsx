@@ -14,7 +14,7 @@ export default class Pong extends React.Component<{}, {pong: boolean}> {
         this.state = {
             pong: false,
         };
-        setTimeout(this.pong.bind(this), 10000);
+        setTimeout(this.pong.bind(this), 5000);
     }
 
     pong(): void {
