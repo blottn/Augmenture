@@ -2,6 +2,10 @@ const path = require('path');
 
 module.exports = {
     entry: './src/frontend/app.tsx',
+    externals: {
+        'react-dom': 'ReactDOM',
+        'react' : 'React'
+    },
     module: {
         rules: [
             {

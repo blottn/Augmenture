@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { Request, Response } from 'express';
 
-import Index from './frontend/index';
+import Base from './frontend/base';
 
 import { TokenRequest } from './types';
 import { validateEmail } from './utils';
@@ -13,7 +13,7 @@ import { validateEmail } from './utils';
 import UserModel, { User } from './models/user';
 
 export function index(req: Request, res: Response): void {
-    res.send(ReactDOMServer.renderToString(<Index />));
+    res.send(ReactDOMServer.renderToString(<Base />));
 }
 
 export function signup(req: Request, res: Response): void {

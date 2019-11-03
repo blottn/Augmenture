@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as Index from './index';
+import { Banner, Signup } from './signup';
 import Header from './header';
 
 export default (): JSX.Element => (
@@ -11,7 +11,12 @@ export default (): JSX.Element => (
         </head>
         <body className="root">
             <div id="root" className="flex fill">
-                <Index />
+                <div className="flex-balance">
+                    <Banner />
+                </div>
+                <div className="flex flex-balance flex-center purple">
+                    <Signup />
+                </div>
             </div>
         </body>
     </html>
