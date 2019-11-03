@@ -1,30 +1,58 @@
 import * as React from 'react';
 
-export default class Pong extends React.Component<{}, {bouncing: boolean}> {
+export default class Pong extends React.Component<{}, {pong: boolean}> {
+    static Bar(): JSX.Element {
+        return <div className="pong-change pong-sliding" />;
+    }
+
+    static Ball(): JSX.Element {
+        return <div className="pong-change pong-ball" />;
+    }
+
     constructor(props) {
         super(props);
         this.state = {
-            bouncing: true,
+            pong: false,
         };
+        setTimeout(this.pong.bind(this), 10000);
+    }
+
+    pong(): void {
+        this.setState(() => ({ pong: true }));
     }
 
     render(): JSX.Element {
-        const { bouncing } = this.state;
-        if (bouncing) {
-            return (
-                <div className="flex pong-holder">
-                    <div className="pong-paddle-track">
-                        <div className="pong-paddle" />
-                    </div>
-                    <div className="flex-balance pong-track">
-                        <div className="pong-ball" />
-                    </div>
-                    <div className="pong-paddle-track">
-                        <div className="pong-paddle-offset" />
-                    </div>
-                </div>
-            );
+        const { pong } = this.state;
+
+        // default classes
+        let rootClass = 'flex ';
+        let trackClass = 'flex-balance ';
+        let leftPaddleClass = 'pong-paddle';
+        let rightPaddleClass = 'pong-paddle-offset ';
+
+        if (pong) {
+            rootClass += 'pong-root-ball';
+            trackClass += 'pong-track-hidden';
+            leftPaddleClass = 'pong-paddle';
+        } else {
+            rootClass += 'pong-root-bar';
+            trackClass += 'pong-track';
+            leftPaddleClass = 'pong-paddle-hidden';
+            rightPaddleClass = 'pong-paddle-offset-hidden';
         }
-        return (<h1>oops</h1>);
+
+        return (
+            <div className={rootClass}>
+                <div className="pong-paddle-track">
+                    <div className={leftPaddleClass} />
+                </div>
+                <div className={trackClass}>
+                    {(pong ? <Pong.Ball /> : <Pong.Bar />)}
+                </div>
+                <div className="pong-paddle-track">
+                    <div className={rightPaddleClass} />
+                </div>
+            </div>
+        );
     }
 }

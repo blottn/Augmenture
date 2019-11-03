@@ -1,13 +1,28 @@
-$bar-pong-width: 38%;
 $ball-pong-width: 3.5%;
 $pong-height: 100px;
 $paddle-height: 46%;
 
 .pong {
-    &-holder {
+
+    &-change {
+        transition: width 0.5s;
+    }
+
+    &-root {
         height: 100px;
         justify-content: space-between;
-        align-items: center
+        align-items: center;
+        --pong-ball-width: 32%;
+
+        &-bar {
+            @extend .pong-root;
+            --pong-ball-width: 32%;
+        }
+
+        &-ball {
+            @extend .pong-root;
+            --pong-ball-width: 10px;
+        }
     }
 
     &-paddle-track {
@@ -21,15 +36,26 @@ $paddle-height: 46%;
         border-radius: 5px;
         position: relative;
         animation: paddleAnimation 1.25s infinite linear;
+        transition: background 0.5s, height 0.5s;
 
         &-offset {
             @extend .pong-paddle;
             animation: paddleAnimationOffset 5s infinite linear;
+
+            &-hidden {
+                @extend .pong-paddle-offset;
+                background: 0000;
+            }
+        }
+
+        &-hidden {
+            @extend .pong-paddle;
+            background: 0000;
         }
     }
 
     &-ball {
-        width: $ball-pong-width;
+        width: var(--pong-ball-width, 10px);
         height: 100%;
         background: grey;
         border-radius: 5px;
@@ -38,12 +64,28 @@ $paddle-height: 46%;
         animation: slidehorizontal 2.5s infinite alternate linear, slidevertical 1s infinite linear;
     }
 
+    &-sliding {
+        width: var(--pong-ball-width, 10px);
+        height: 100%;
+        background: grey;
+        border-radius: 5px;
+        visibility: visible;
+        position: relative;
+        animation: slidehorizontal 2.5s infinite alternate ease-in-out;
+    }
+
     &-track {
-        visibility: hidden;
+        visibility: visible;
         height: 10px;
         background: #eee;
         border-radius: 4px;
         margin: 0px 4px;
+        transition: visibility 0.5s;
+
+        &-hidden {
+            @extend .pong-track;
+            visibility: invisible;
+        }
     }
 }
 
@@ -66,7 +108,7 @@ $paddle-height: 46%;
 
 @keyframes slidehorizontal {
     from { left: 0%; }
-    to { left: 100% - $ball-pong-width;}
+    to { left: calc(100% - var(--pong-ball-width, 10px))}
 }
 
 @keyframes slidevertical {
@@ -75,5 +117,12 @@ $paddle-height: 46%;
     50% { bottom: 0px; }
     75% { bottom: ($pong-height / 2) - 5px; }
     100% { bottom: 0px; }
+}
 
+@keyframes bounce {
+    0% { left: 0%; bottom: 0px; }
+    25% { bottom: -($pong-height / 2) + 5px; }
+    50% { bottom: 0px; }
+    75% { bottom: ($pong-height / 2) - 5px; }
+    100% { bottom: 0px; left: calc(100% - var(--pong-ball-width, 5px)) }
 }

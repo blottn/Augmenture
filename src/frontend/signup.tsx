@@ -18,22 +18,23 @@ export const Banner = (): JSX.Element => (
 );
 
 export class Signup extends React.Component<{}, { loading: boolean}> {
-    static signup(e): void {
-        e.preventDefault();
-    }
-
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
+            loading: false,
         };
+    }
+
+    signup(e): void {
+        this.setState(() => ({ loading: true }));
+        e.preventDefault();
     }
 
     renderForm(): JSX.Element {
         console.log(this.state);
         return (
             <form
-                onSubmit={Signup.signup}
+                onSubmit={this.signup}
             >
                 <h4>Signup</h4>
                 <hr />
