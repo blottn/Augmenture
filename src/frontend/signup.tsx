@@ -25,17 +25,15 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
         };
     }
 
-    signup(e): void {
+    signup(e): boolean {
         this.setState(() => ({ loading: true }));
         e.preventDefault();
+        return false;
     }
 
     renderForm(): JSX.Element {
-        console.log(this.state);
         return (
-            <form
-                onSubmit={this.signup}
-            >
+            <form onSubmit={this.signup.bind(this)}>
                 <h4>Signup</h4>
                 <hr />
                 <input className="form-control my-1" placeholder="display name" type="text" name="uname" />
