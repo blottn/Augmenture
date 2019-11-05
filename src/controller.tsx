@@ -13,7 +13,7 @@ import { validateEmail } from './utils';
 import UserModel, { User } from './models/user';
 
 export function index(req: Request, res: Response): void {
-    res.send(ReactDOMServer.renderToString(<Base />));
+    res.send(ReactDOMServer.renderToString(<Base route="" />));
 }
 
 export function signup(req: Request, res: Response): void {

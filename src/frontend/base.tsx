@@ -1,23 +1,32 @@
 import * as React from 'react';
 
-import { Banner, Signup } from './signup';
+import Index from './index';
 import Header from './header';
 
-export default (): JSX.Element => (
-    <html lang="en">
-        <head>
-            <Header />
-            <title>Augmenture</title>
-        </head>
-        <body className="root">
-            <div id="root" className="flex fill">
-                <div className="flex-balance">
-                    <Banner />
+const pages = {
+    '': Index,
+};
+
+type BaseProps = {
+    route: string;
+};
+
+const Base: React.FunctionComponent<BaseProps> = ({ route }) => {
+    const Page = pages[route];
+
+    return (
+        <html lang="en">
+            <head>
+                <Header />
+                <title>Augmenture</title>
+            </head>
+            <body className="root">
+                <div id="root" className="flex fill">
+                    <Page />
                 </div>
-                <div className="flex flex-balance flex-center purple">
-                    <Signup />
-                </div>
-            </div>
-        </body>
-    </html>
-);
+            </body>
+        </html>
+    );
+};
+
+export default Base;
