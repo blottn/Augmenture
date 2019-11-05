@@ -9,12 +9,19 @@ export default class Pong extends React.Component<{}, {pong: boolean}> {
         return <div className="pong-change pong-ball" />;
     }
 
+    timer: ReturnType<typeof setTimeout>;
+
     constructor(props) {
         super(props);
         this.state = {
             pong: false,
         };
-        setTimeout(this.pong.bind(this), 5000);
+
+        this.timer = setTimeout(this.pong.bind(this), 5000);
+    }
+
+    componentWillUnmount(): void {
+        clearTimeout(this.timer);
     }
 
     pong(): void {

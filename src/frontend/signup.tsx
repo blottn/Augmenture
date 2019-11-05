@@ -1,5 +1,6 @@
+import Cookies from 'js-cookie';
 import * as React from 'react';
-
+import $ from 'jquery';
 import Pong from './pong';
 
 export const Banner = (): JSX.Element => (
@@ -26,18 +27,47 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
     }
 
     signup(e): boolean {
-        this.setState(() => ({ loading: true }));
+        this.setState((state) => {
+            if (!state.loading) {
+                return { loading: true };
+            }
+            return state;
+        });
+
+        const form = {};
+        new FormData($('#signup-form')[0]).forEach((value, key) => {
+            form[key] = value;
+        });
+
+        $.ajax('http://localhost:3000/signup', {
+            data: form,
+            method: 'POST',
+            success: (data) => {
+                Cookies.set('access_token', data.accessToken);
+                // redirect
+                window.location.assign('http://localhost:3000/home');
+            },
+            error: () => {
+                // reset form
+                this.setState((state) => {
+                    if (state.loading) {
+                        return { loading: false };
+                    }
+                    return state;
+                });
+            },
+        });
         e.preventDefault();
         return false;
     }
 
     renderForm(): JSX.Element {
         return (
-            <form onSubmit={this.signup.bind(this)}>
+            <form id="signup-form" onSubmit={this.signup.bind(this)}>
                 <h4>Signup</h4>
                 <hr />
                 <input className="form-control my-1" placeholder="display name" type="text" name="uname" />
-                <input className="form-control my-1" placeholder="email" type="email" name="emai" />
+                <input className="form-control my-1" placeholder="email" type="email" name="email" />
                 <input className="form-control my-1" placeholder="password" type="password" name="pw" />
                 <input className="btn btn-primary my-2" type="submit" />
             </form>
