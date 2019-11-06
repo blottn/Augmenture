@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { Request, Response } from 'express';
 
-import Base from './frontend/base';
+import Base from './frontend/components/base';
 
 import { TokenRequest } from './types';
 import { validateEmail } from './utils';

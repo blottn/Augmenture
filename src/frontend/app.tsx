@@ -1,13 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import Index from './index';
 
-import Pong from './pong';
+import Index from './components/index';
 
 window.onload = (): void => {
     ReactDOM.hydrate(<Index />, document.getElementById('root'));
 };
 export default {
     Index,
-    Pong,
 };

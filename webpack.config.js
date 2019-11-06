@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/frontend/app.tsx',
+    entry: {
+        'index': './src/frontend/app.tsx',
+        'home': './src/frontend/home.tsx',
+    },
     externals: {
         'react-dom': 'ReactDOM',
         'react' : 'React'
@@ -22,7 +25,7 @@ module.exports = {
         minimize: false
     },
     output:  { 
-        filename: 'bundle.js',
+        filename: '[name].js',
         library: 'augmenture',
         path: path.resolve(__dirname, 'dist/static'),
     }

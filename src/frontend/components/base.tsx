@@ -3,30 +3,23 @@ import * as React from 'react';
 import Header from './header';
 
 // pages
-import Index from './index';
-import Home from './home';
-
-const pages = {
-    '': Index,
-    home: Home,
-};
+import Pages from './pages';
 
 type BaseProps = {
     route: string;
 };
 
 const Base: React.FunctionComponent<BaseProps> = ({ route }) => {
-    const Page = pages[route];
-
+    const { Component, bundle } = Pages[route];
     return (
         <html lang="en">
             <head>
-                <Header />
+                <Header bundleSrc={bundle} />
                 <title>Augmenture</title>
             </head>
             <body className="root">
                 <div id="root" className="flex fill">
-                    <Page />
+                    <Component />
                 </div>
             </body>
         </html>

@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-export default (): JSX.Element => (
+type HeaderProps = {
+    bundleSrc: string;
+};
+
+const Header: React.FunctionComponent<HeaderProps> = ({ bundleSrc }) => (
     <>
         {/* favicon */}
         <link
@@ -27,6 +31,8 @@ export default (): JSX.Element => (
         {/* react */}
         <script src="https://unpkg.com/react@16/umd/react.development.js" />
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" />
-        <script src="http://localhost:3000/static/bundle.js" />
+        <script src={`http://localhost:3000/static/${bundleSrc}`} />
     </>
 );
+
+export default Header;
