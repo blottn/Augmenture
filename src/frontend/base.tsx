@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-import Index from './index';
 import Header from './header';
+
+// pages
+import Index from './index';
+import Home from './home';
 
 const pages = {
     '': Index,
+    home: Home,
 };
 
 type BaseProps = {

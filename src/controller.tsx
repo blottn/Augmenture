@@ -16,6 +16,9 @@ export function index(req: Request, res: Response): void {
     res.send(ReactDOMServer.renderToString(<Base route="" />));
 }
 
+export function home(req: TokenRequest, res: Response): void {
+    res.send(ReactDOMServer.renderToString(<Base route="home" />));
+}
 export function signup(req: Request, res: Response): void {
     const { email, uname, pw } = req.body;
 
@@ -52,8 +55,4 @@ export function signup(req: Request, res: Response): void {
             });
         }
     });
-}
-
-export function home(req: TokenRequest, res: Response): void {
-    res.send('home');
 }
