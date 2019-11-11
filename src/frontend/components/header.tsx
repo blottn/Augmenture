@@ -13,6 +13,12 @@ const Header: React.FunctionComponent<HeaderProps> = ({ bundleSrc }) => (
             href="http://localhost:3000/static/augmenture.png"
         />
         {/* css */}
+        {/* augmented ui */}
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://unpkg.com/augmented-ui/augmented.css"
+        />
         {/* bootstrap */}
         <link
             rel="stylesheet"
