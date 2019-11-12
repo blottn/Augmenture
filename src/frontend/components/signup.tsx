@@ -84,7 +84,7 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
 
     render(): JSX.Element {
         return (
-            <div className="flex flex-column card signup-card">
+            <div className="flex flex-column aug-card signup-card">
                 {this.renderContents()}
             </div>
         );

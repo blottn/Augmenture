@@ -19,7 +19,7 @@ const Nav: React.FunctionComponent<NavProps> = ({ Page }) => (
                 <h5>Starred</h5>
                 <h5>Some other utility</h5>
             </div>
-            <div className="aug-nav-page">
+            <div className="fill aug-nav-page">
                 <Page />
             </div>
         </div>
