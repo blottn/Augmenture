@@ -1,11 +1,12 @@
 .aug {
     &-nav {
-        width: 8%;
-        background: white;
-        transition: width 0.3s ease-out;
+        flex: 1 0;
+        background: #40007e;
+        color: white;
+        padding: 8px;
 
         &-page {
-            width: 92%;
+            flex: 20 0;
         }
 
         &-root {

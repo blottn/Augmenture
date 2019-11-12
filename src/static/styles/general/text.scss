@@ -1,0 +1,10 @@
+.text {
+    &-centre {
+        text-align: center;
+    }
+    &-augmenture {
+        color: transparent;
+        background: linear-gradient(#ff9a55, deeppink);
+        -webkit-background-clip: text;
+    }
+}
