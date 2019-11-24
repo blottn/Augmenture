@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Inject from './utils';
 
 type HeaderProps = {
     bundleSrc: string;
@@ -39,7 +40,7 @@ function Header<M>({ model, bundleSrc }): React.FunctionComponentElement<HeaderP
             <script src="https://unpkg.com/react@16/umd/react.development.js" />
             <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" />
             <script src={`http://localhost:3000/static/${bundleSrc}`} />
-            <title>{model}</title>
+            <Inject<M> name="mdata" model={model} />
         </>
     );
 }
