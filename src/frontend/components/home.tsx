@@ -16,7 +16,7 @@ class HomePage extends React.Component<{}, HomeProps> {
     constructor(props) {
         super(props);
         const initial = [];
-        
+
         for (let i = 0; i < 10; i += 1) {
             initial.push({
                 title: `Panel number ${i}`,

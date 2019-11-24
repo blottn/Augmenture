@@ -3,27 +3,27 @@ import * as React from 'react';
 import Header from './header';
 
 // pages
-import Pages from './pages';
+// import Pages from './pages';
 
-type BaseProps = {
-    route: string;
+type BaseP = {
+    Page: React.ElementType;
+    bundleSrc: string;
 };
 
-const Base: React.FunctionComponent<BaseProps> = ({ route }) => {
-    const { Component, bundle } = Pages[route];
+function Base<M>({ Page, model, bundleSrc }): React.FunctionComponentElement<BaseP & {model: M}> {
     return (
         <html lang="en">
             <head>
-                <Header bundleSrc={bundle} />
+                <Header<M> model={model} bundleSrc={bundleSrc} />
                 <title>Augmenture</title>
             </head>
             <body className="root">
                 <div id="root" className="flex fill">
-                    <Component />
+                    <Page model={model} />
                 </div>
             </body>
         </html>
     );
-};
+}
 
 export default Base;

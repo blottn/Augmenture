@@ -6,18 +6,27 @@ import * as React from 'react';
 import { Request, Response } from 'express';
 
 import Base from './frontend/components/base';
+import Index from './frontend/components/index';
+import Home from './frontend/components/home';
 
 import { TokenRequest } from './types';
 import { validateEmail } from './utils';
 
 import UserModel, { User } from './models/user';
+import CardModel from './models/card';
 
 export function index(req: Request, res: Response): void {
-    res.send(ReactDOMServer.renderToString(<Base route="" />));
+    res.send(ReactDOMServer.renderToString(<Base<string> model="yo" Page={Index} bundleSrc="index.js" />));
 }
 
 export function home(req: TokenRequest, res: Response): void {
-    res.send(ReactDOMServer.renderToString(<Base route="home" />));
+    CardModel.find({}, (err, cards) => {
+        if (err) {
+            res.send(`uhoh ${err}`);
+        }
+        console.log(cards);
+        res.send(ReactDOMServer.renderToString(<Base<string> model="hi" Page={Home} bundleSrc="home.js" />));
+    });
 }
 export function signup(req: Request, res: Response): void {
     const { email, uname, pw } = req.body;
