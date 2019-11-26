@@ -15,6 +15,7 @@ import { validateEmail } from './utils';
 import UserModel, { User } from './models/user';
 import CardModel, { Card } from './models/card';
 
+// test change
 export function index(req: Request, res: Response): void {
     res.send(ReactDOMServer.renderToString(<Base Page={Index} bundleSrc="index.js" />));
 }
