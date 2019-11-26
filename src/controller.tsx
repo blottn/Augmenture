@@ -13,10 +13,10 @@ import { TokenRequest } from './types';
 import { validateEmail } from './utils';
 
 import UserModel, { User } from './models/user';
-import CardModel from './models/card';
+import CardModel, { Card } from './models/card';
 
 export function index(req: Request, res: Response): void {
-    res.send(ReactDOMServer.renderToString(<Base<string> model="yo" Page={Index} bundleSrc="index.js" />));
+    res.send(ReactDOMServer.renderToString(<Base Page={Index} bundleSrc="index.js" />));
 }
 
 export function home(req: TokenRequest, res: Response): void {
@@ -24,8 +24,7 @@ export function home(req: TokenRequest, res: Response): void {
         if (err) {
             res.send(`uhoh ${err}`);
         }
-        console.log(cards);
-        res.send(ReactDOMServer.renderToString(<Base<string> model="hi" Page={Home} bundleSrc="home.js" />));
+        res.send(ReactDOMServer.renderToString(<Base<Card> model={cards} Page={Home} bundleSrc="home.js" />));
     });
 }
 export function signup(req: Request, res: Response): void {

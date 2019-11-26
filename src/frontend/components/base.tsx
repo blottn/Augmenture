@@ -2,15 +2,13 @@ import * as React from 'react';
 
 import Header from './header';
 
-// pages
-// import Pages from './pages';
-
 type BaseP = {
     Page: React.ElementType;
     bundleSrc: string;
 };
 
-function Base<M>({ Page, model, bundleSrc }): React.FunctionComponentElement<BaseP & {model: M}> {
+
+function Base<M>({ Page, model, bundleSrc }): React.FunctionComponentElement<BaseP & {model?: M}> {
     return (
         <html lang="en">
             <head>
@@ -25,5 +23,9 @@ function Base<M>({ Page, model, bundleSrc }): React.FunctionComponentElement<Bas
         </html>
     );
 }
+
+Base.defaultProps = {
+    model: undefined,
+};
 
 export default Base;

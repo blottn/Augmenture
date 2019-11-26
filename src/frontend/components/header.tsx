@@ -5,7 +5,8 @@ type HeaderProps = {
     bundleSrc: string;
 };
 
-function Header<M>({ model, bundleSrc }): React.FunctionComponentElement<HeaderProps & {model: M}> {
+function Header<M>({ model, bundleSrc }):
+    React.FunctionComponentElement<HeaderProps & {model?: M}> {
     return (
         <>
             {/* favicon */}
@@ -31,16 +32,16 @@ function Header<M>({ model, bundleSrc }): React.FunctionComponentElement<HeaderP
                 href="http://localhost:3000/static/styles/index.css"
             />
             {/* js */}
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
             <script src="https://code.jquery.com/jquery-3.4.1.min.js" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" />
             <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js" />
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
 
             {/* react */}
             <script src="https://unpkg.com/react@16/umd/react.development.js" />
             <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" />
             <script src={`http://localhost:3000/static/${bundleSrc}`} />
-            <Inject<M> name="mdata" model={model} />
+            { model !== undefined ? <Inject<M> name="mdata" model={model} /> : null }
         </>
     );
 }
