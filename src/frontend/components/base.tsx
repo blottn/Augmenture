@@ -3,16 +3,16 @@ import * as React from 'react';
 import Header from './header';
 
 type BaseP = {
-    Page: React.ElementType;
+    Page: React.ElementType & {bundleSrc: string};
     bundleSrc: string;
 };
 
 
-function Base<M>({ Page, model, bundleSrc }): React.FunctionComponentElement<BaseP & {model?: M}> {
+function Base<M>({ Page, model }): React.FunctionComponentElement<BaseP & {model?: M}> {
     return (
         <html lang="en">
             <head>
-                <Header<M> model={model} bundleSrc={bundleSrc} />
+                <Header<M> model={model} bundleSrc={Page.bundleSrc} />
                 <title>Augmenture</title>
             </head>
             <body className="root">

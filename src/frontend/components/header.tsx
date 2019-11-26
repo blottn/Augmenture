@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Inject from './utils';
+import { Inject } from './utils';
 
 type HeaderProps = {
     bundleSrc: string;

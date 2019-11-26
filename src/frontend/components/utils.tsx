@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+export interface BundledComponent {
+    bundleSrc: string;
+}
+
 export default function Inject<M>({ name, model }):
     React.FunctionComponentElement<{name: string; model: M}> {
     const packaged = JSON.stringify(model);
