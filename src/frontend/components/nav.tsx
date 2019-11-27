@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const withNav = (Page): ({(model: any): JSX.Element} & {bundleSrc: string}) => {
+const withNav = (Page): FunctionComponentElement & {bundleSrc: string}) => {
     const nav = (model): JSX.Element => (
         <div className="flex flex-nowrap aug-nav-root">
             <div className="flex flex-column aug-nav text-center">
