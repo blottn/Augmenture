@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Card from './card';
-import Nav from './nav';
+import withNav from './nav';
 
 type TCard = {
     title: string;
@@ -12,11 +12,10 @@ type HomeProps = {
     cards: TCard[];
 }
 
-class HomePage extends React.Component<{}, HomeProps> {
+class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
     constructor(props) {
         super(props);
         const initial = [];
-
         for (let i = 0; i < 10; i += 1) {
             initial.push({
                 title: `Panel number ${i}`,
@@ -35,6 +34,8 @@ class HomePage extends React.Component<{}, HomeProps> {
         ));
     }
 
+    static bundleSrc = 'home';
+
     render(): JSX.Element {
         return (
             <div className="flex home-root">
@@ -44,6 +45,6 @@ class HomePage extends React.Component<{}, HomeProps> {
     }
 }
 
-export default (): JSX.Element => (
-    <Nav Page={HomePage} />
-);
+HomePage.bundleSrc = 'home';
+
+export default withNav(HomePage);

@@ -1,11 +1,7 @@
 import * as React from 'react';
 
-type NavProps = {
-    Page: React.ReactType;
-};
-
-const Nav: React.FunctionComponent<NavProps> = ({ Page }) => (
-    <>
+const withNav = (Page): ({(model: any): JSX.Element} & {bundleSrc: string}) => {
+    const nav = (model): JSX.Element => (
         <div className="flex flex-nowrap aug-nav-root">
             <div className="flex flex-column aug-nav text-center">
                 <h2>
@@ -20,10 +16,13 @@ const Nav: React.FunctionComponent<NavProps> = ({ Page }) => (
                 <h5>Some other utility</h5>
             </div>
             <div className="fill aug-nav-page">
-                <Page />
+                <Page {...model} />
             </div>
         </div>
-    </>
-);
+    );
+    nav.bundleSrc = Page.bundleSrc;
+    return nav;
+};
 
-export default Nav;
+
+export default withNav;
