@@ -47,4 +47,4 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
 
 HomePage.bundleSrc = 'home';
 
-export default withNav(HomePage);
+export default withNav<HomeProps>(HomePage);
