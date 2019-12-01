@@ -2,30 +2,20 @@ import * as React from 'react';
 
 import Header from './header';
 
-type BaseP = {
-    Page: React.ElementType & {bundleSrc: string};
-    bundleSrc: string;
-};
 
-
-function Base<M>({ Page, model }): React.FunctionComponentElement<BaseP & {model?: M}> {
-    return (
+const withBase = <P extends {}>(Page):
+    React.FunctionComponent<{ model?: P }> => ({ model }): JSX.Element => (
         <html lang="en">
             <head>
-                <Header<M> model={model} bundleSrc={Page.bundleSrc} />
+                <Header<P> model={model} bundleSrc={Page.bundleSrc} />
                 <title>Augmenture</title>
             </head>
             <body className="root">
                 <div id="root" className="flex fill">
-                    <Page model={model} />
+                    <Page {...model} />
                 </div>
             </body>
         </html>
     );
-}
 
-Base.defaultProps = {
-    model: undefined,
-};
-
-export default Base;
+export default withBase;

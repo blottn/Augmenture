@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { Request, Response } from 'express';
 
-import Base from './frontend/components/base';
+import withBase from './frontend/components/base';
 import Index from './frontend/components/index';
 import Home from './frontend/components/home';
 
@@ -16,7 +16,8 @@ import UserModel, { User } from './models/user';
 import CardModel, { Card } from './models/card';
 
 export function index(req: Request, res: Response): void {
-    res.send(ReactDOMServer.renderToString(<Base Page={Index} />));
+    const Page = withBase<{}>(Index);
+    res.send(ReactDOMServer.renderToString(<Page />));
 }
 
 export function home(req: TokenRequest, res: Response): void {
@@ -24,7 +25,9 @@ export function home(req: TokenRequest, res: Response): void {
         if (err) {
             res.send(`uhoh ${err}`);
         }
-        res.send(ReactDOMServer.renderToString(<Base<Card> model={cards} Page={Home} />));
+        console.log(cards);
+        const Page = withBase<{cards?: Card[]}>(Home);
+        res.send(ReactDOMServer.renderToString(<Page />));
     });
 }
 export function signup(req: Request, res: Response): void {
