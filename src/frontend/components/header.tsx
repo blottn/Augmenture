@@ -41,7 +41,7 @@ function Header<M>({ model, bundleSrc }):
             <script src="https://unpkg.com/react@16/umd/react.development.js" />
             <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" />
             <script src={`http://localhost:3000/static/${bundleSrc}.js`} />
-            { model !== undefined ? <Inject<M> name="mdata" model={model} /> : null }
+            { model !== undefined ? <Inject<M> name="data" model={model} /> : null }
         </>
     );
 }
