@@ -59,9 +59,7 @@ export function signup(req: Request, res: Response): void {
                 secret: pw,
             }, () => {
                 // success
-                const token = jwt.sign({ uname }, 'greatsecret', {
-                    expiresIn: '24h',
-                });
+                const token = jwt.sign({ uname }, 'greatsecret');
                 res.status(201)
                     .send({ accessToken: token });
             });
