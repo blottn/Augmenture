@@ -30,7 +30,9 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
     getCards(): JSX.Element[] {
         const { cards } = this.state;
         return cards.map(({ title, contents }) => (
-            <Card title={title} contents={contents} key={title} />
+            <div className="cardholder" key={title}>
+                <Card title={title} contents={contents} />
+            </div>
         ));
     }
 
