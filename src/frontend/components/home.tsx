@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import Create from './create';
 import Card from './card';
 import withNav from './nav';
 
@@ -16,7 +17,7 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
     constructor(props) {
         super(props);
         const initial = [];
-        for (let i = 0; i < 10; i += 1) {
+        for (let i = 0; i < 40; i += 1) {
             initial.push({
                 title: `Panel number ${i}`,
                 contents: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate malesuada arcu, nec placerat ipsum maximus at',
@@ -40,9 +41,12 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
 
     render(): JSX.Element {
         return (
-            <div className="flex home-root">
-                { this.getCards() }
-            </div>
+            <>
+                <div className="flex home-root">
+                    { this.getCards() }
+                </div>
+                <Create />
+            </>
         );
     }
 }

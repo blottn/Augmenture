@@ -1,7 +1,9 @@
 // Customisation of bootstrap here
 
 $theme-colors: (
-    "primary": #40007e
+    "primary": #40007e,
+    "secondary": #ff1a66,
+    "accent": deeppink
 );
 
 @import "bootstrap";
