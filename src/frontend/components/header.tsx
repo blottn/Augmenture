@@ -22,14 +22,14 @@ function Header<M>({ model, bundleSrc }):
                 type="text/css"
                 href="https://unpkg.com/augmented-ui/augmented.css"
             />
-            {/* bootstrap */}
-            <link
-                rel="stylesheet"
-                href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            />
             <link
                 rel="stylesheet"
                 href="http://localhost:3000/static/styles/index.css"
+            />
+            {/* icon library */}
+            <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
             />
             {/* js */}
             <script src="https://code.jquery.com/jquery-3.4.1.min.js" />
