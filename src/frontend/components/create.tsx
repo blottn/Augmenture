@@ -7,7 +7,16 @@ export default class Create extends React.Component {
 
     render(): JSX.Element {
         return (
-            <button className="btn btn-secondary float aug-btn-create"><i className="fa fa-plus" /></button>
+            <div className="btn-group dropup float">
+                <button className="btn btn-secondary dropdown-toggle aug-btn-create" data-toggle="dropdown">
+                    <i className="fa fa-plus" />
+                </button>
+                <div className="dropdown-menu dropdown-menu-right">
+                    <button className="dropdown-item" type="button">Action</button>
+                    <button className="dropdown-item" type="button">Another action</button>
+                    <button className="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
         );
     }
 }

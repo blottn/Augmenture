@@ -9,7 +9,7 @@ const project = gulpTS.createProject('tsconfig.json');
 const del = require('del');
 
 const outDir = 'dist';
-gulpSass.compiler = require('node-sass');
+gulpSass.compiler = require('sass');
 
 
 function lint(callback) {

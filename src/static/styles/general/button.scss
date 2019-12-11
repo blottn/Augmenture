@@ -1,13 +1,18 @@
 .aug-btn {
     &-create {
-        width: 100px;
-        height: 100px;
-        border-radius: 50px;
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        box-shadow: 3px 3px 3px #222;
     }
 }
 
 .float {
     position: fixed;
-	bottom:50px;
-	right:50px;
+	bottom:15px;
+	right:15px;
+}
+
+.dropdown-toggle::after {
+    display: none;
 }
