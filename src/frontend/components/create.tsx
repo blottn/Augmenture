@@ -1,9 +1,6 @@
 import * as React from 'react';
 
 export default class Create extends React.Component {
-    static createCard() {
-        console.log('hello!');
-    }
 
     render(): JSX.Element {
         return (
