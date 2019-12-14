@@ -45,7 +45,9 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
                 <div className="flex home-root">
                     { this.getCards() }
                 </div>
-                <Create />
+                <div>
+                    <Create />
+                </div>
             </>
         );
     }

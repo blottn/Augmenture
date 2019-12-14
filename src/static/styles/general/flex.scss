@@ -14,6 +14,10 @@
     &-nowrap {
         flex-wrap: nowrap;
     }
+
+    &-reverse {
+        flex-direction: row-reverse;
+    }
 }
 
 .flex-balance {
