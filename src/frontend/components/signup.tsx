@@ -10,7 +10,7 @@ export const Banner = (): JSX.Element => (
             <p>
                 <strong>
                     Create
-                    <span className="adjective"> amazing </span>
+                    <span className="banner-adjective"> amazing </span>
                     D&D campaign Notes!
                 </strong>
             </p>
@@ -69,7 +69,7 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
                 <input className="form-control my-1" placeholder="display name" type="text" name="uname" />
                 <input className="form-control my-1" placeholder="email" type="email" name="email" />
                 <input className="form-control my-1" placeholder="password" type="password" name="pw" />
-                <input className="btn btn-primary my-2" type="submit" />
+                <input className="btn btn-outline-primary my-2 float-right" type="submit" />
             </form>
         );
     }
