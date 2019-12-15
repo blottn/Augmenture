@@ -1,0 +1,7 @@
+.scroll-left {
+    direction: rtl;
+    
+    & > * {
+        direction: ltr;
+    }
+}

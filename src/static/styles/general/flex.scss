@@ -11,12 +11,16 @@
         flex-direction: column;
     }
 
-    &-nowrap {
-        flex-wrap: nowrap;
+    &-row {
+        flex-direction: row;
     }
 
     &-reverse {
         flex-direction: row-reverse;
+    }
+
+    &-nowrap {
+        flex-wrap: nowrap;
     }
 }
 
