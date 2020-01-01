@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Create from './create';
+import CreateButton, {CreateForm} from './create';
 import Card from './card';
 import withNav from './nav';
 
@@ -13,7 +13,7 @@ type HomeProps = {
     cards: TCard[];
 }
 
-class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
+class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: boolean}> {
     constructor(props) {
         super(props);
         const initial = [];
@@ -25,6 +25,7 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
         }
         this.state = {
             cards: initial,
+            cardVisible: false,
         };
     }
 
@@ -36,18 +37,41 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
             </div>
         ));
     }
+    
+    pressCreate() {
+        this.setState(({cards, cardVisible}) => {
+            return {
+                cards,
+                cardVisible: !cardVisible,
+            };
+        });
+    }
 
     static bundleSrc = 'home';
 
     render(): JSX.Element {
+        const form = (<CreateForm />);
+        let formContainerClassName;
+        if (this.state.cardVisible) {
+            console.log('visible');
+            formContainerClassName = "flex-yield";
+        } else {
+            console.log('gone');
+            formContainerClassName = "flex-yield d-none";
+        }
         return (
             <>
-                <div className="flex home-root">
-                    { this.getCards() }
+                <div className="fill flex">
+                    <div className="fill flex flex-wide scroll scroll-left home-root">
+                        { this.getCards() }
+                    </div>
+                    <div className={formContainerClassName}>
+                        <div className="create-form-container">
+                        { form }
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <Create />
-                </div>
+                <CreateButton cb={this.pressCreate.bind(this)}/>
             </>
         );
     }

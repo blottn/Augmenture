@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class CardForm extends React.Component {
+export class CreateForm extends React.Component {
     render(): JSX.Element {
         return (
             <form className="create-form">
@@ -13,7 +13,7 @@ class CardForm extends React.Component {
                     className="create-content"
                     rows={15}
                     placeholder="Content" />
-                <button className="btn btn-outline-primary create-confirm float-right">
+                <button className="btn btn-outline-primary create-confirm">
                     Create
                 </button>
             </form>
@@ -21,17 +21,20 @@ class CardForm extends React.Component {
     }
 }
 
-export default class Create extends React.Component {
+export default class CreateButton extends React.Component<{ cb: (() => void) }, {}> {
+    cb: () => void;
+    constructor(props) {
+        super(props);
+        this.cb = props.cb;
+    }
 
     render(): JSX.Element {
         return (
-            <div className="btn-group dropup float">
-                <button className="btn btn-secondary dropdown-toggle aug-btn-create" data-toggle="dropdown" data-offset="0,8">
+            <div className="btn-group float">
+                <button className="btn btn-secondary aug-btn-create"
+                    onClick={this.cb}>
                     <i className="fa fa-plus" />
                 </button>
-                <div className="dropdown-menu create-container">
-                    <CardForm />
-                </div>
             </div>
         );
     }

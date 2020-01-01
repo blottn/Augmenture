@@ -22,6 +22,14 @@
     &-nowrap {
         flex-wrap: nowrap;
     }
+
+    &-wide {
+        flex: 1 0;
+    }
+
+    &-yield {
+        flex: 0 1;
+    }
 }
 
 .flex-balance {

@@ -26,6 +26,10 @@
     &-form {
         width: 250px;
         margin:8px;
+
+        &-container {
+            border: 1px solid deeppink;
+        }
     }
 
     &-hr {
