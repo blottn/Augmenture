@@ -60,7 +60,7 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: 
         return (
             <>
                 <div className="fill flex">
-                    <div className="fill flex flex-wide scroll scroll-left home-root">
+                    <div className="fill flex flex-reverse flex-wide scroll scroll-left home-root">
                         { this.getCards() }
                     </div>
                     <div className={formContainerClassName}>

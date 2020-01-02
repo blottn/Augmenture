@@ -14,9 +14,11 @@ export class CreateForm extends React.Component {
                         className="create-content"
                         rows={15}
                         placeholder="Content" />
-                    <button className="btn btn-outline-primary create-confirm">
-                        Create
-                    </button>
+                    <div className="text-right">
+                        <button className="btn btn-outline-primary create-confirm">
+                            Create
+                        </button>
+                    </div>
                 </form>
             </div>
         );
