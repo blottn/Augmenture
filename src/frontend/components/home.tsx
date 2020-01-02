@@ -53,10 +53,8 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: 
         const form = (<CreateForm />);
         let formContainerClassName;
         if (this.state.cardVisible) {
-            console.log('visible');
             formContainerClassName = "flex-yield";
         } else {
-            console.log('gone');
             formContainerClassName = "flex-yield d-none";
         }
         return (
@@ -66,9 +64,7 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: 
                         { this.getCards() }
                     </div>
                     <div className={formContainerClassName}>
-                        <div className="create-form-container">
                         { form }
-                        </div>
                     </div>
                 </div>
                 <CreateButton cb={this.pressCreate.bind(this)}/>

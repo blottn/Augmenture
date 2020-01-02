@@ -3,20 +3,22 @@ import * as React from 'react';
 export class CreateForm extends React.Component {
     render(): JSX.Element {
         return (
-            <form className="create-form">
-                <textarea
-                    className="create-title"
-                    rows={1}
-                    placeholder="Title" />
-                <hr className="aug-hr create-hr" />
-                <textarea
-                    className="create-content"
-                    rows={15}
-                    placeholder="Content" />
-                <button className="btn btn-outline-primary create-confirm">
-                    Create
-                </button>
-            </form>
+            <div className="create-form-container mx-4 my-4">
+                <form className="create-form">
+                    <textarea
+                        className="create-title"
+                        rows={1}
+                        placeholder="Title" />
+                    <hr className="aug-hr create-hr" />
+                    <textarea
+                        className="create-content"
+                        rows={15}
+                        placeholder="Content" />
+                    <button className="btn btn-outline-primary create-confirm">
+                        Create
+                    </button>
+                </form>
+            </div>
         );
     }
 }
