@@ -1,0 +1,44 @@
+.create {
+    &-base {
+        width: 100%;
+        resize: none;
+        border: none;
+    }
+
+    &-base:focus {
+        outline: none;
+    }
+
+    &-content {
+        @extend .create-base;
+    }
+
+    &-title {
+        @extend .create-base;
+        font-weight: bold;
+    }
+
+    &-container {
+        border: 1px solid #40007e;
+        box-shadow: 3px 3px 3px #40007e;
+    }
+
+    &-form {
+        width: 250px;
+        margin:8px;
+
+        &-container {
+            border: 1px solid deeppink;
+            border-radius: 8px;
+            box-shadow: #555 3px 3px 3px 0px;
+        }
+    }
+
+    &-hr {
+        margin: 0;
+    }
+
+    &-confirm {
+
+    }
+}

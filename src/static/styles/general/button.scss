@@ -1,0 +1,16 @@
+.aug-btn {
+    &-create {
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        box-shadow: 3px 3px 3px #222;
+        font-size: 30px;
+    }
+}
+
+.float {
+    position: fixed;
+	bottom:15px;
+	right:15px;
+}
+

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import CreateButton, {CreateForm} from './create';
 import Card from './card';
 import withNav from './nav';
 
@@ -12,11 +13,11 @@ type HomeProps = {
     cards: TCard[];
 }
 
-class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
+class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: boolean}> {
     constructor(props) {
         super(props);
         const initial = [];
-        for (let i = 0; i < 10; i += 1) {
+        for (let i = 0; i < 40; i += 1) {
             initial.push({
                 title: `Panel number ${i}`,
                 contents: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate malesuada arcu, nec placerat ipsum maximus at',
@@ -24,6 +25,7 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
         }
         this.state = {
             cards: initial,
+            cardVisible: false,
         };
     }
 
@@ -35,14 +37,38 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]}> {
             </div>
         ));
     }
+    
+    pressCreate() {
+        this.setState(({cards, cardVisible}) => {
+            return {
+                cards,
+                cardVisible: !cardVisible,
+            };
+        });
+    }
 
     static bundleSrc = 'home';
 
     render(): JSX.Element {
+        const form = (<CreateForm />);
+        let formContainerClassName;
+        if (this.state.cardVisible) {
+            formContainerClassName = "flex-yield";
+        } else {
+            formContainerClassName = "flex-yield d-none";
+        }
         return (
-            <div className="flex home-root">
-                { this.getCards() }
-            </div>
+            <>
+                <div className="fill flex">
+                    <div className="fill flex flex-wide scroll scroll-left home-root">
+                        { this.getCards() }
+                    </div>
+                    <div className={formContainerClassName}>
+                        { form }
+                    </div>
+                </div>
+                <CreateButton cb={this.pressCreate.bind(this)}/>
+            </>
         );
     }
 }

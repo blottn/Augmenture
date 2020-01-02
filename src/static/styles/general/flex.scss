@@ -11,8 +11,24 @@
         flex-direction: column;
     }
 
+    &-row {
+        flex-direction: row;
+    }
+
+    &-reverse {
+        flex-direction: row-reverse;
+    }
+
     &-nowrap {
         flex-wrap: nowrap;
+    }
+
+    &-wide {
+        flex: 1 0;
+    }
+
+    &-yield {
+        flex: 0 1;
     }
 }
 

@@ -9,7 +9,7 @@ const project = gulpTS.createProject('tsconfig.json');
 const del = require('del');
 
 const outDir = 'dist';
-gulpSass.compiler = require('node-sass');
+gulpSass.compiler = require('sass');
 
 
 function lint(callback) {
@@ -48,7 +48,7 @@ function clean(callback) {
 
 function css(callback) {
     gulp.src(['./src/**/*.scss'], {base: './src/' })
-        .pipe(gulpSass().on('error', gulpSass.logError))
+        .pipe(gulpSass({includePaths: './node_modules/bootstrap/scss'}).on('error', gulpSass.logError))
         .pipe(gulp.dest('./dist/'));
     callback();
 }
@@ -64,4 +64,5 @@ exports.css = css;
 exports.build = build;
 exports.clean = clean;
 exports.resources = resources;
+exports.dev = gulp.series(clean, build, css, bundle, resources);
 exports.default = gulp.series(clean, lint, build, css, bundle, resources);

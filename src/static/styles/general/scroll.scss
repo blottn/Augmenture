@@ -1,0 +1,13 @@
+.scroll {
+    
+    overflow: scroll;
+
+
+    &-left {
+        direction: rtl;
+        & > * {
+            direction: ltr;
+        }
+    }
+}
+
