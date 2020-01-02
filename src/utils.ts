@@ -30,6 +30,7 @@ export function validateEmail(email: string): boolean {
 function generateCreate(app: Application, model: Model<Document>, root = '/api/'): void {
     const route = `${root}${model.modelName}/create`;
     app.post(route, (req: Request, resp: Response) => {
+        new model(req.body).save((err) => {console.log(err);});
         resp.send('OK');
     });
 }

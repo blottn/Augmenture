@@ -2,15 +2,15 @@ import { model, Schema, Document } from 'mongoose';
 import { User } from './user';
 
 export interface Card extends Document{
-    name: string;
-    body: string;
+    title: string;
+    content: string;
     owner: User['_id'];
 }
 
 
 export const CardSchema: Schema = new Schema({
     title: String,
-    body: String,
+    content: String,
 });
 
 

@@ -6,7 +6,7 @@ import withNav from './nav';
 
 type TCard = {
     title: string;
-    contents: string;
+    content: string;
 }
 
 type HomeProps = {
@@ -17,23 +17,23 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: 
     constructor(props) {
         super(props);
         const initial = [];
-        for (let i = 0; i < 40; i += 1) {
+        for (let i = 0; i < 6; i += 1) {
             initial.push({
                 title: `Panel number ${i}`,
-                contents: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate malesuada arcu, nec placerat ipsum maximus at',
+                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate malesuada arcu, nec placerat ipsum maximus at',
             });
         }
         this.state = {
-            cards: initial,
+            cards: initial.concat(props.cards),
             cardVisible: false,
         };
     }
 
     getCards(): JSX.Element[] {
         const { cards } = this.state;
-        return cards.map(({ title, contents }) => (
+        return cards.map(({ title, content }) => (
             <div className="cardholder" key={title}>
-                <Card title={title} contents={contents} />
+                <Card title={title} content={content} />
             </div>
         ));
     }
