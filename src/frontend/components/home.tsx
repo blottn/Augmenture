@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import CreateButton, {CreateForm} from './create';
+import CreateButton, { CreateForm } from './create';
 import Card from './card';
 import withNav from './nav';
 
@@ -13,18 +13,11 @@ type HomeProps = {
     cards: TCard[];
 }
 
-class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: boolean}> {
-    constructor(props) {
-        super(props);
-        const initial = [];
-        for (let i = 0; i < 6; i += 1) {
-            initial.push({
-                title: `Panel number ${i}`,
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate malesuada arcu, nec placerat ipsum maximus at',
-            });
-        }
+class HomePage extends React.Component<HomeProps, {cards: TCard[]; cardVisible: boolean}> {
+    constructor({ cards }) {
+        super({ cards });
         this.state = {
-            cards: initial.concat(props.cards),
+            cards,
             cardVisible: false,
         };
     }
@@ -37,14 +30,12 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: 
             </div>
         ));
     }
-    
-    pressCreate() {
-        this.setState(({cards, cardVisible}) => {
-            return {
-                cards,
-                cardVisible: !cardVisible,
-            };
-        });
+
+    pressCreate(): void {
+        this.setState(({ cards, cardVisible }) => ({
+            cards,
+            cardVisible: !cardVisible,
+        }));
     }
 
     static bundleSrc = 'home';
@@ -52,10 +43,11 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: 
     render(): JSX.Element {
         const form = (<CreateForm />);
         let formContainerClassName;
-        if (this.state.cardVisible) {
-            formContainerClassName = "flex-yield";
+        const { cardVisible } = this.state;
+        if (cardVisible) {
+            formContainerClassName = 'flex-yield';
         } else {
-            formContainerClassName = "flex-yield d-none";
+            formContainerClassName = 'flex-yield d-none';
         }
         return (
             <>
@@ -67,7 +59,7 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[], cardVisible: 
                         { form }
                     </div>
                 </div>
-                <CreateButton cb={this.pressCreate.bind(this)}/>
+                <CreateButton cb={this.pressCreate} />
             </>
         );
     }
