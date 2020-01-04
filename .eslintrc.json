@@ -6,7 +6,6 @@
         "es6": true,
         "node": true
     },
-    "fix": true,
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
