@@ -27,10 +27,10 @@ export function validateEmail(email: string): boolean {
 }
 
 // CRUD gen
-function generateCreate(app: Application, model: Model<Document>, root = '/api/'): void {
-    const route = `${root}${model.modelName}/create`;
+function generateCreate(app: Application, DocumentModel: Model<Document>, root = '/api/'): void {
+    const route = `${root}${DocumentModel.modelName}/create`;
     app.post(route, (req: Request, resp: Response) => {
-        new model(req.body).save((err) => {console.log(err);});
+        new DocumentModel(req.body).save((err) => { console.log(err); });
         resp.send('OK');
     });
 }

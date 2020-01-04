@@ -28,7 +28,7 @@ export function home(req: TokenRequest, res: Response): void {
         console.log(cards);
         const Page = withBase<{cards: Card[]}>(Home);
 
-        res.send(ReactDOMServer.renderToString(<Page model={{cards: cards}} />));
+        res.send(ReactDOMServer.renderToString(<Page model={{ cards }} />));
     });
 }
 export function signup(req: Request, res: Response): void {

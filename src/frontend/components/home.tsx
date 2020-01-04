@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import CreateButton, { CreateForm } from './create';
+import CreateButton from './create/button';
+import CreateForm from './create/form';
+
 import Card from './card';
 import withNav from './nav';
 
@@ -14,8 +16,14 @@ type HomeProps = {
 }
 
 class HomePage extends React.Component<HomeProps, {cards: TCard[]; cardVisible: boolean}> {
-    constructor({ cards }) {
-        super({ cards });
+    create: () => void;
+
+    constructor(props) {
+        super(props);
+
+        this.create = this.pressCreate.bind(this);
+
+        const { cards } = props;
         this.state = {
             cards,
             cardVisible: false,
@@ -59,7 +67,7 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]; cardVisible: 
                         { form }
                     </div>
                 </div>
-                <CreateButton cb={this.pressCreate} />
+                <CreateButton cb={this.create} />
             </>
         );
     }
