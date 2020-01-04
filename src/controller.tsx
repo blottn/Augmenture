@@ -13,6 +13,7 @@ import { TokenRequest } from './types';
 import { validateEmail } from './utils';
 
 import UserModel, { User } from './models/user';
+import CollectionModel, { Collection } from './models/collection';
 import CardModel, { Card } from './models/card';
 
 export function index(req: Request, res: Response): void {
@@ -21,14 +22,10 @@ export function index(req: Request, res: Response): void {
 }
 
 export function home(req: TokenRequest, res: Response): void {
-    CardModel.find({}, (err, cards) => {
-        if (err) {
-            res.send(`uhoh ${err}`);
-        }
-        console.log(cards);
+    UserModel.findOne({uname: req.uname}, (err, { home }) => {
+        console.log(home);
         const Page = withBase<{cards: Card[]}>(Home);
-
-        res.send(ReactDOMServer.renderToString(<Page model={{ cards }} />));
+        res.send(ReactDOMServer.renderToString(<Page model={{ cards: home.items }} />));
     });
 }
 export function signup(req: Request, res: Response): void {
@@ -57,6 +54,7 @@ export function signup(req: Request, res: Response): void {
                 uname,
                 email,
                 secret: pw,
+                home: new CollectionModel(),
             }, () => {
                 // success
                 const token = jwt.sign({ uname }, 'greatsecret');
