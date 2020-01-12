@@ -7,6 +7,7 @@ export interface Card extends Document{
     owner: User['_id'];
 }
 
+export const CardName = 'card';
 
 export const CardSchema: Schema = new Schema({
     title: String,
@@ -14,4 +15,4 @@ export const CardSchema: Schema = new Schema({
 });
 
 
-export default model<Card>('Card', CardSchema);
+export default model<Card>(CardName, CardSchema);

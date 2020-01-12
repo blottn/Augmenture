@@ -9,8 +9,7 @@ type Token = {
 
 export default function (req: TokenRequest, res: Response, next): void {
     if (!req.token) {
-        res.status(401)
-            .end();
+        res.redirect('/');
     } else {
         try {
             const { uname } = jwt.verify(req.token, 'greatsecret') as Token;

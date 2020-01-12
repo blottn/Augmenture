@@ -22,10 +22,15 @@ export function index(req: Request, res: Response): void {
 }
 
 export function home(req: TokenRequest, res: Response): void {
+    // find home for the user
     UserModel.findOne({uname: req.uname}, (err, { home }) => {
-        console.log(home);
-        const Page = withBase<{cards: Card[]}>(Home);
-        res.send(ReactDOMServer.renderToString(<Page model={{ cards: home.items }} />));
+        if (err) {
+            res.redirect('/');
+        }
+        else {
+            const Page = withBase<{cards: Card[]}>(Home);
+            res.send(ReactDOMServer.renderToString(<Page model={{ cards: home.items }} />));
+        }
     });
 }
 export function signup(req: Request, res: Response): void {

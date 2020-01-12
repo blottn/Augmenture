@@ -11,6 +11,8 @@ export interface User extends Document {
     home: Collection;
 }
 
+export const UserName = 'user';
+
 export const UserSchema: Schema = new Schema({
     fname: String,
     sname: String,
@@ -19,7 +21,7 @@ export const UserSchema: Schema = new Schema({
     home: CollectionSchema,
 });
 
-const UserModel = model<User>('User', UserSchema);
+const UserModel = model<User>(UserName, UserSchema);
 
 export default UserModel;
 
