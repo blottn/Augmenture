@@ -16,7 +16,7 @@ const withNav = <P extends {}>(Page):
                         A
                     </span>
                 </h2>
-                <p>{ user }</p>
+                <p className="aug-nav-user">{ user }</p>
                 <hr className="aug-hr" />
                 <h5>Home</h5>
                 <h5>Recents</h5>

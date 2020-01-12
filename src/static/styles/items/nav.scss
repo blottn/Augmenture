@@ -15,5 +15,11 @@
             width: 100%;    
             display: flex;
         }
+
+        &-user {
+            color: limegreen;
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
     }
 }

@@ -20,12 +20,12 @@ export function index(req: Request, res: Response): void {
 
 export function home(req: TokenRequest, res: Response): void {
     // find home for the user
-    UserModel.findOne({ uname: req.uname }, (err, u) => {
-        if (err || u == null) {
+    UserModel.findOne({ uname: req.uname }, (err, user) => {
+        if (err || user == null) {
             res.redirect('/');
         } else {
-            console.log(u);
-            res.send(ReactDOMServer.renderToString(<Home user="hello" cards={[]} />));
+            console.log(user);
+            res.send(ReactDOMServer.renderToString(<Home user={user.uname} cards={[]} />));
         }
     });
 }
