@@ -65,7 +65,7 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
         return (
             <form id="signup-form" onSubmit={this.signup.bind(this)}>
                 <h4>Signup</h4>
-                <hr />
+                <hr className="signup-bar" />
                 <input className="form-control my-1" placeholder="display name" type="text" name="uname" />
                 <input className="form-control my-1" placeholder="email" type="email" name="email" />
                 <input className="form-control my-1" placeholder="password" type="password" name="pw" />

@@ -1,6 +1,10 @@
-.signup- {
-    &card {
+.signup {
+    &-card {
         width: 400px;
         transition: height 0.3s;
+    }
+
+    &-bar {
+        background: deeppink;
     }
 }
