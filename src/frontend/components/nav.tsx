@@ -19,10 +19,12 @@ const withNav = <P extends {}>(Page):
                     </h2>
                     <p className="aug-nav-user">{ user }</p>
                     <hr className="aug-hr" />
-                    <p className="aug-nav-head">Home</p>
-                    <p className="aug-nav-head">Recents</p>
-                    <p className="aug-nav-head">Starred</p>
-                    <p className="aug-nav-head">Integrations</p>
+                    <div className="aug-nav-parts">
+                        <p className="aug-nav-head">Home</p><p>🏠</p>
+                        <p className="aug-nav-head">Recents</p><p>🕙</p>
+                        <p className="aug-nav-head">Starred</p><p>✨</p>
+                        <p className="aug-nav-head">Integrations</p><p>⇥</p>
+                    </div>
                 </div>
                 <div className="aug-nav-footer">
                     <button className="btn btn-outline-light">Log Out</button>

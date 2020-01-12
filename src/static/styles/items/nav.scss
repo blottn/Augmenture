@@ -1,12 +1,12 @@
 .aug {
     &-nav {
-        flex: 1 0;
+        flex: 0 0 auto;
         background: #40007e;
         color: white;
         padding: 8px;
 
         &-page {
-            flex: 20 0;
+            flex: 20 0 auto;
         }
 
         &-root {
@@ -29,6 +29,11 @@
         
         &-main {
             flex: 1 1 auto;
+        }
+        
+        &-parts {
+            display: grid;
+            grid-template-columns: auto auto;
         }
 
         &-footer {
