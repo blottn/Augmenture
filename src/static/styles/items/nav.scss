@@ -21,5 +21,18 @@
             font-weight: bold;
             margin-bottom: 0px;
         }
+
+        &-head {
+            font-weight: bold;
+            margin: 0px;
+        }
+        
+        &-main {
+            flex: 1 1 auto;
+        }
+
+        &-footer {
+            flex: 0 1 auto;
+        }
     }
 }
