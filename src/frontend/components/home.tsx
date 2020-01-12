@@ -4,7 +4,7 @@ import CreateButton from './create/button';
 import CreateForm from './create/form';
 
 import Card from './card';
-import withNav from './nav';
+import withNav, { NavProps } from './nav';
 import withBase from './base';
 
 type TCard = {
@@ -78,4 +78,4 @@ Home.bundleSrc = 'home';
 
 export const HomePage = withNav<HomeProps>(Home);
 
-export default withBase<HomeProps>(HomePage);
+export default withBase<NavProps & HomeProps>(HomePage);

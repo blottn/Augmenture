@@ -20,11 +20,12 @@ export function index(req: Request, res: Response): void {
 
 export function home(req: TokenRequest, res: Response): void {
     // find home for the user
-    UserModel.findOne({ uname: req.uname }, (err, { root }) => {
-        if (err) {
+    UserModel.findOne({ uname: req.uname }, (err, u) => {
+        if (err || u == null) {
             res.redirect('/');
         } else {
-            res.send(ReactDOMServer.renderToString(<Home cards={root.items} />));
+            console.log(u);
+            res.send(ReactDOMServer.renderToString(<Home user="hello" cards={[]} />));
         }
     });
 }
@@ -50,16 +51,18 @@ export function signup(req: Request, res: Response): void {
             res.status(409)
                 .send(`${uname} already in use`);
         } else {
-            UserModel.create({
-                uname,
-                email,
-                secret: pw,
-                home: new CollectionModel(),
-            }, () => {
-                // success
-                const token = jwt.sign({ uname }, 'greatsecret');
-                res.status(201)
-                    .send({ accessToken: token });
+            CollectionModel.create({items: []}, (err, collection) => {
+                UserModel.create({
+                    uname,
+                    email,
+                    secret: pw,
+                    root: collection,
+                }, () => {
+                    // success
+                    const token = jwt.sign({ uname }, 'greatsecret');
+                    res.status(201)
+                        .send({ accessToken: token });
+                });
             });
         }
     });

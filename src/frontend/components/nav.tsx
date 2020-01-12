@@ -1,7 +1,14 @@
 import * as React from 'react';
 
-const withNav = <M extends {}>(Page): React.FunctionComponent<M> & {bundleSrc: string} => {
-    const nav = (model): JSX.Element => (
+export type NavProps = {
+    user: string;
+}
+
+
+const withNav = <P extends {}>(Page):
+    React.FunctionComponent<P & NavProps>
+    & {bundleSrc: string} => {
+    const nav = ({ user, ...rest }): JSX.Element => (
         <div className="flex flex-nowrap aug-nav-root">
             <div className="flex flex-column aug-nav text-center">
                 <h2>
@@ -9,6 +16,7 @@ const withNav = <M extends {}>(Page): React.FunctionComponent<M> & {bundleSrc: s
                         A
                     </span>
                 </h2>
+                <p>{ user }</p>
                 <hr className="aug-hr" />
                 <h5>Home</h5>
                 <h5>Recents</h5>
@@ -16,7 +24,7 @@ const withNav = <M extends {}>(Page): React.FunctionComponent<M> & {bundleSrc: s
                 <h5>Some other utility</h5>
             </div>
             <div className="fill aug-nav-page">
-                <Page {...model} />
+                <Page {...rest} />
             </div>
         </div>
     );

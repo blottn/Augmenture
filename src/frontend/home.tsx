@@ -5,7 +5,7 @@ import { HomePage } from './components/home';
 
 window.onload = (): void => {
     console.log(window.data);
-    ReactDOM.hydrate(<HomePage cards={window.data.cards} />, document.getElementById('root'));
+    ReactDOM.hydrate(<HomePage user="hello" cards={window.data.cards} />, document.getElementById('root'));
 };
 export default {
     HomePage,
