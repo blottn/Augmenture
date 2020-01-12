@@ -1,9 +1,14 @@
 import * as React from 'react';
+import * as Cookies from 'js-cookie';
 
 export type NavProps = {
     user: string;
 }
 
+function logout() {
+    Cookies.remove('access_token');
+    window.location.href = '/';
+}
 
 const withNav = <P extends {}>(Page):
     React.FunctionComponent<P & NavProps>
@@ -27,7 +32,7 @@ const withNav = <P extends {}>(Page):
                     </div>
                 </div>
                 <div className="aug-nav-footer">
-                    <button className="btn btn-outline-light">Log Out</button>
+                    <button className="btn btn-outline-light" onClick={logout}>Logout</button>
                 </div>
             </div>
             <div className="fill aug-nav-page">
