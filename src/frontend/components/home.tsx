@@ -6,6 +6,7 @@ import CreateForm from './create/form';
 import Card from './card';
 import withNav from './nav';
 import withBase from './base';
+
 type TCard = {
     title: string;
     content: string;

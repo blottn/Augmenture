@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
-import {HomePage} from './components/home';
+import { HomePage } from './components/home';
 
 window.onload = (): void => {
     console.log(window.data);

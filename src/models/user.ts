@@ -1,6 +1,6 @@
 import { model, Schema, Document } from 'mongoose';
 
-import CollectionModel, { Collection, CollectionSchema } from './collection';
+import { Collection, CollectionSchema } from './collection';
 
 export interface User extends Document {
     fname?: string;
@@ -8,7 +8,7 @@ export interface User extends Document {
     email: string;
     uname: string;
     secret: string;
-    home: Collection;
+    root: Collection;
 }
 
 export const UserName = 'user';
@@ -18,14 +18,13 @@ export const UserSchema: Schema = new Schema({
     sname: String,
     uname: String,
     secret: String,
-    home: CollectionSchema,
+    root: CollectionSchema,
 });
 
 const UserModel = model<User>(UserName, UserSchema);
 
 export default UserModel;
 
-export function createUser(opts) {
-    opts.home = new CollectionModel();
-    new UserModel({});
+export function createUser(): User {
+    return new UserModel({});
 }

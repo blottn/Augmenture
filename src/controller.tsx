@@ -5,7 +5,6 @@ import * as React from 'react';
 
 import { Request, Response } from 'express';
 
-import withBase from './frontend/components/base';
 import Index from './frontend/components/index';
 import Home from './frontend/components/home';
 
@@ -13,8 +12,7 @@ import { TokenRequest } from './types';
 import { validateEmail } from './utils';
 
 import UserModel, { User } from './models/user';
-import CollectionModel, { Collection } from './models/collection';
-import CardModel, { Card } from './models/card';
+import CollectionModel from './models/collection';
 
 export function index(req: Request, res: Response): void {
     res.send(ReactDOMServer.renderToString(<Index />));
@@ -22,12 +20,11 @@ export function index(req: Request, res: Response): void {
 
 export function home(req: TokenRequest, res: Response): void {
     // find home for the user
-    UserModel.findOne({uname: req.uname}, (err, { home }) => {
+    UserModel.findOne({ uname: req.uname }, (err, { root }) => {
         if (err) {
             res.redirect('/');
-        }
-        else {
-            res.send(ReactDOMServer.renderToString(<Home cards={[]}/>));
+        } else {
+            res.send(ReactDOMServer.renderToString(<Home cards={root.items} />));
         }
     });
 }
