@@ -1,10 +1,7 @@
 import * as React from 'react';
 
 const withNav = <M extends {}>(Page): React.FunctionComponent<M> & {bundleSrc: string} => {
-    const nav = (model): JSX.Element => {
-        console.log('nav props:');
-        console.log(model);
-        return (
+    const nav = (model): JSX.Element => (
         <div className="flex flex-nowrap aug-nav-root">
             <div className="flex flex-column aug-nav text-center">
                 <h2>
@@ -22,7 +19,7 @@ const withNav = <M extends {}>(Page): React.FunctionComponent<M> & {bundleSrc: s
                 <Page {...model} />
             </div>
         </div>
-    )};
+    );
     nav.bundleSrc = Page.bundleSrc;
     return nav;
 };

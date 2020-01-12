@@ -20,8 +20,6 @@ class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: bool
 
     constructor(props) {
         super(props);
-        console.log('home props: ');
-        console.log(props);
 
         this.create = this.pressCreate.bind(this);
 
