@@ -4,7 +4,7 @@ import Header from './header';
 
 
 const withBase = <P extends {}>(Page):
-    React.FunctionComponent<{ model?: P }> => ({ model }): JSX.Element => (
+    React.FunctionComponent<P> => (model): JSX.Element => (
         <html lang="en">
             <head>
                 <Header<P> model={model} bundleSrc={Page.bundleSrc} />

@@ -1,8 +1,9 @@
 import * as React from 'react';
 
+import withBase from './base';
 import { Banner, Signup } from './signup';
 
-export default function Index(): React.FunctionComponentElement<{}> {
+export function Index(): React.FunctionComponentElement<{}> {
     return (
         <>
             <div className="flex-balance">
@@ -16,3 +17,5 @@ export default function Index(): React.FunctionComponentElement<{}> {
 }
 
 Index.bundleSrc = 'index';
+
+export default withBase<{}>(Index);

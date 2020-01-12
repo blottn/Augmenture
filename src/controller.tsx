@@ -17,8 +17,7 @@ import CollectionModel, { Collection } from './models/collection';
 import CardModel, { Card } from './models/card';
 
 export function index(req: Request, res: Response): void {
-    const Page = withBase<{}>(Index);
-    res.send(ReactDOMServer.renderToString(<Page />));
+    res.send(ReactDOMServer.renderToString(<Index />));
 }
 
 export function home(req: TokenRequest, res: Response): void {
@@ -28,8 +27,7 @@ export function home(req: TokenRequest, res: Response): void {
             res.redirect('/');
         }
         else {
-            const Page = withBase<{cards: Card[]}>(Home);
-            res.send(ReactDOMServer.renderToString(<Page model={{ cards: home.items }} />));
+            res.send(ReactDOMServer.renderToString(<Home cards={[]}/>));
         }
     });
 }

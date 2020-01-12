@@ -5,21 +5,23 @@ import CreateForm from './create/form';
 
 import Card from './card';
 import withNav from './nav';
-
+import withBase from './base';
 type TCard = {
     title: string;
     content: string;
 }
 
-type HomeProps = {
+export type HomeProps = {
     cards: TCard[];
 }
 
-class HomePage extends React.Component<HomeProps, {cards: TCard[]; cardVisible: boolean}> {
+class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: boolean}> {
     create: () => void;
 
     constructor(props) {
         super(props);
+        console.log('home props: ');
+        console.log(props);
 
         this.create = this.pressCreate.bind(this);
 
@@ -73,6 +75,8 @@ class HomePage extends React.Component<HomeProps, {cards: TCard[]; cardVisible: 
     }
 }
 
-HomePage.bundleSrc = 'home';
+Home.bundleSrc = 'home';
 
-export default withNav<HomeProps>(HomePage);
+export const HomePage = withNav<HomeProps>(Home);
+
+export default withBase<HomeProps>(HomePage);

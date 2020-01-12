@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        'index': './src/frontend/app.tsx',
+        'index': './src/frontend/index.tsx',
         'home': './src/frontend/home.tsx',
     },
     externals: {
