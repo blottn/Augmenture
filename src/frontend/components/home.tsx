@@ -31,20 +31,31 @@ class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: bool
         };
     }
 
-    getCards(): JSX.Element[] {
-        const { cards } = this.state;
-        return cards.map(({ title, content }) => (
-            <div className="cardholder" key={title}>
-                <Card title={title} content={content} />
-            </div>
-        ));
-    }
-
     pressCreate(): void {
         this.setState(({ cards, cardVisible }) => ({
             cards,
             cardVisible: !cardVisible,
         }));
+    }
+
+    getHomeContent(): JSX.Element[] {
+        const { cards } = this.state;
+        if (cards.length == 0) {
+            return (
+                [
+                    <div key="content" className="home-placeholder">
+                        <h5>
+                            You haven't created any cards yet, click the plus in the bottom right to get started!
+                        </h5>
+                    </div>
+                ]
+            );
+        }
+        return cards.map(({ title, content }) => (
+            <div className="cardholder" key={title}>
+                <Card title={title} content={content} />
+            </div>
+        ));
     }
 
     static bundleSrc = 'home';
@@ -62,7 +73,7 @@ class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: bool
             <>
                 <div className="fill flex">
                     <div className="fill flex flex-reverse flex-wide scroll scroll-left home-root">
-                        { this.getCards() }
+                        { this.getHomeContent() }
                     </div>
                     <div className={formContainerClassName}>
                         { form }
