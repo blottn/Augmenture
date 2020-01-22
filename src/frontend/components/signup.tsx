@@ -1,6 +1,8 @@
 import Cookies from 'js-cookie';
 import * as React from 'react';
+import Typist from 'react-typist';
 import $ from 'jquery';
+
 import Pong from './pong';
 
 export const Banner = (): JSX.Element => (
@@ -9,9 +11,7 @@ export const Banner = (): JSX.Element => (
             <h1>Augmenture</h1>
             <p>
                 <strong>
-                    Create
-                    <span className="banner-adjective"> amazing </span>
-                    D&D campaign notes!
+                    <Typist className="banner-adjective">D&D campaign notes that are amazing</Typist>
                 </strong>
             </p>
         </div>

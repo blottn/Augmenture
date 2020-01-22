@@ -21,6 +21,7 @@
     "pug": "^2.0.4",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-typist": "^2.0.5",
     "tslint": "^5.20.1"
   },
   "devDependencies": {
