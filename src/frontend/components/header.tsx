@@ -16,12 +16,6 @@ function Header<M>({ model, bundleSrc }):
                 href="http://localhost:3000/static/augmenture.png"
             />
             {/* css */}
-            {/* augmented ui */}
-            <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://unpkg.com/augmented-ui/augmented.css"
-            />
             <link
                 rel="stylesheet"
                 href="http://localhost:3000/static/styles/index.css"
