@@ -11,27 +11,29 @@ export const Banner = (): JSX.Element => (
                 <strong>
                     Create
                     <span className="banner-adjective"> amazing </span>
-                    D&D campaign Notes!
+                    D&D campaign notes!
                 </strong>
             </p>
         </div>
     </div>
 );
 
-export class Signup extends React.Component<{}, { loading: boolean}> {
+export class Signup extends React.Component<{}, { loading: boolean; stage: string}> {
     constructor(props) {
         super(props);
         this.state = {
+            stage: 'choosing',
             loading: false,
         };
     }
-
+    
+    // handlers
     signup(e): boolean {
-        this.setState((state) => {
-            if (!state.loading) {
-                return { loading: true };
+        this.setState(({ loading, ...rest}) => {
+            if (!loading) {
+                return { loading: true, ...rest };
             }
-            return state;
+            return {loading, ...rest};
         });
 
         const form = {};
@@ -49,11 +51,11 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
             },
             error: () => {
                 // reset form
-                this.setState((state) => {
-                    if (state.loading) {
-                        return { loading: false };
+                this.setState(({loading, ...rest}) => {
+                    if (loading) {
+                        return { loading: false, ...rest };
                     }
-                    return state;
+                    return {loading, ...rest};
                 });
             },
         });
@@ -61,7 +63,38 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
         return false;
     }
 
-    renderForm(): JSX.Element {
+    beginLogin(e): boolean {
+        this.setState(({stage, ...rest}) => {
+            return {stage: 'login', ...rest};
+        });
+        return true;
+    }
+    beginSignup(e): boolean {
+        this.setState(({stage, ...rest}) => {
+            return {stage: 'signup', ...rest};
+        });
+        return true;
+    }
+    choice(): JSX.Element {
+        return (
+            <div className="">
+                <button
+                    className="btn btn-light btn-block signup-button"
+                    onClick={this.beginSignup.bind(this)}
+                >
+                    Signup
+                </button>
+                <button
+                    className="btn btn-primary btn-block signup-button"
+                    onClick={this.beginLogin.bind(this)}
+                >
+                    Login
+                </button>
+            </div>
+        );
+    }
+
+    signupForm(): JSX.Element {
         return (
             <form id="signup-form" onSubmit={this.signup.bind(this)}>
                 <h4>Signup</h4>
@@ -74,12 +107,23 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
         );
     }
 
+    loginForm(): JSX.Element {
+        return (
+            <div>login</div>
+        );
+    }
+
     renderContents(): JSX.Element {
-        const { loading } = this.state;
+        const { loading, stage } = this.state;
         if (loading) {
             return (<Pong />);
+        } else if (stage === 'choosing') {
+            return this.choice();
+        } else if (stage === 'login') {
+            return this.loginForm();
+        } else {
+            return this.signupForm();
         }
-        return this.renderForm();
     }
 
     render(): JSX.Element {
@@ -90,3 +134,6 @@ export class Signup extends React.Component<{}, { loading: boolean}> {
         );
     }
 }
+
+
+
