@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import * as CardModel from '../../models/card';
+
 import CreateButton from './create/button';
 import CreateForm from './create/form';
 
@@ -60,8 +62,15 @@ class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: bool
 
     static bundleSrc = 'home';
 
+    createCard(card: CardModel.Card): void {
+        this.setState(({cards, ...rest}) => {
+            cards.push(card);
+            return {cards, ...rest};
+        });
+    }
+
     render(): JSX.Element {
-        const form = (<CreateForm />);
+        const form = (<CreateForm handler={this.createCard.bind(this)}/>);
         let formContainerClassName;
         const { cardVisible } = this.state;
         if (cardVisible) {

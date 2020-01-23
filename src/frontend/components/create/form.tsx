@@ -1,13 +1,22 @@
 import * as React from 'react';
 import * as $ from 'jquery';
 
+import { Card } from '../../../models/card';
+
 const FORM_TITLE_KEY = 'title';
 const FORM_CONTENT_KEY = 'content';
 
-export default class CreateForm extends React.Component {
-    constructor(props) {
-        super(props);
+type CreateFormProps = {
+    handler: (Card) => void; 
+}
 
+export default class CreateForm extends React.Component<CreateFormProps, {}> {
+
+    handler: (Card) => void;
+
+    constructor({handler}) {
+        super({handler});
+        this.handler = handler;
         const s = {};
         s[FORM_TITLE_KEY] = '';
         s[FORM_CONTENT_KEY] = '';
@@ -25,7 +34,10 @@ export default class CreateForm extends React.Component {
         $.ajax('http://localhost:3000/api/card/create', {
             method: 'POST',
             data: this.state,
+        }).done(() => {
+            this.handler(this.state);
         });
+
         evt.preventDefault();
     }
 
