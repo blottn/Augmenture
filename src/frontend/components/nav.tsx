@@ -14,7 +14,7 @@ const withNav = <P extends {}>(Page):
     React.FunctionComponent<P & NavProps>
     & {bundleSrc: string} => {
     const nav = ({ user, ...rest }): JSX.Element => (
-        <div className="flex flex-nowrap aug-nav-root">
+        <div className="aug-nav-root">
             <div className="flex flex-column aug-nav text-center">
                 <div className="flex flex-column aug-nav-main">
                     <h2>
@@ -35,7 +35,7 @@ const withNav = <P extends {}>(Page):
                     <button className="btn btn-outline-light" onClick={logout}>Logout</button>
                 </div>
             </div>
-            <div className="fill aug-nav-page">
+            <div className="fill">
                 <Page {...rest} />
             </div>
         </div>

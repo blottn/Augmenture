@@ -1,25 +1,23 @@
 .aug {
     &-nav {
-        flex: 0 0 auto;
         background: #40007e;
         color: white;
         padding: 8px;
-
-        &-page {
-            flex: 20 0 auto;
-        }
 
         &-root {
             overflow: hidden;
             height: 100%;
             width: 100%;    
-            display: flex;
+            display: grid;
+            grid-template-columns: 10% 90%;
         }
 
         &-user {
             color: limegreen;
             font-weight: bold;
             margin-bottom: 0px;
+            width: 100%;
+            word-break: break-word;
         }
 
         &-head {
@@ -28,6 +26,7 @@
         }
         
         &-main {
+            width: 100%;
             flex: 1 1 auto;
         }
         
