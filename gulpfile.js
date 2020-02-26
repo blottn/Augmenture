@@ -12,51 +12,39 @@ const outDir = 'dist';
 gulpSass.compiler = require('sass');
 
 
-function lint(callback) {
-    gulp.src(['./src/**/*.ts', './src/**/*.tsx', './src/**/*.js'])
+function lint() {
+    return gulp.src(['./src/**/*.ts', './src/**/*.tsx', './src/**/*.js'])
         .pipe(gulpESLint('./.eslintrc.json'))
         .pipe(gulpESLint.format())
         .pipe(gulpESLint.failAfterError());
-    callback();
 }
 
-function build(callback) {
-    project.src()
+function build() {
+    return project.src()
         .pipe(project())
         .js
         .pipe(gulp.dest('dist'));
-    callback();
 }
 
 function bundle(callback) {
     var fs = require('fs');
     var files = fs.readdirSync('./dist/');
-    webpack(webpackConfig, (err, stats) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            callback();
-        }
-    });
+    webpack(webpackConfig, callback)
 }
 
-function clean(callback) {
-    del(['./dist/**/*']);
-    callback();
+function clean() {
+    return del(['./dist/**/*']);
 }
 
-function css(callback) {
-    gulp.src(['./src/**/*.scss'], {base: './src/' })
+function css() {
+    return gulp.src(['./src/**/*.scss'], {base: './src/' })
         .pipe(gulpSass({includePaths: './node_modules/bootstrap/scss'}).on('error', gulpSass.logError))
         .pipe(gulp.dest('./dist/'));
-    callback();
 }
 
-function resources(callback) {
-    gulp.src(['./src/static/*.png'], {base: './src/' })
+function resources() {
+    return gulp.src(['./src/static/*.png'], {base: './src/' })
         .pipe(gulp.dest('./dist/'));
-    callback();
 }
 exports.lint = lint;
 exports.bundle = bundle;
