@@ -69,9 +69,17 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         });
         return true;
     }
+
     beginSignup(e): boolean {
         this.setState(({stage, ...rest}) => {
             return {stage: 'signup', ...rest};
+        });
+        return true;
+    }
+
+    back(e): boolean {
+        this.setState(({stage, ...rest}) => {
+            return {stage: 'choosing', ...rest};
         });
         return true;
     }
@@ -102,14 +110,36 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
                 <input className="form-control my-1" placeholder="display name" type="text" name="uname" />
                 <input className="form-control my-1" placeholder="email" type="email" name="email" />
                 <input className="form-control my-1" placeholder="password" type="password" name="pw" />
-                <input className="btn btn-outline-primary my-2 float-right" type="submit" />
+                <div className="flex flex-spaced">
+                    <button
+                        className="btn btn-outline-secondary"
+                        onClick={this.back.bind(this)}>
+                            Back
+                    </button>
+                    <button className="btn btn-primary float-right" type="submit">
+                        Signup
+                    </button>
+                </div>
             </form>
         );
     }
 
     loginForm(): JSX.Element {
         return (
-            <div>login</div>
+            <form>
+                <h4>Login</h4>
+                <hr className="signup-bar" />
+                <input className="form-control my-1" placeholder="Display Name" type="text" name="uname"/>
+                <input className="form-control my-1" placeholder="Password" type="password" name="pw"/>
+                <div className="flex flex-spaced">
+                    <button
+                        className="btn btn-outline-secondary"
+                        onClick={this.back.bind(this)}>
+                            Back
+                    </button>
+                    <button className="btn btn-primary">Login</button>
+                </div>
+            </form>
         );
     }
 

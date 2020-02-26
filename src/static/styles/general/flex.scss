@@ -22,6 +22,10 @@
     &-nowrap {
         flex-wrap: nowrap;
     }
+    
+    &-spaced {
+        justify-content: space-between;
+    }
 
     &-wide {
         flex: 1 0;
@@ -30,8 +34,10 @@
     &-yield {
         flex: 0 1;
     }
+    
+    &-balance {
+        flex: 1 0;
+    }
 }
 
-.flex-balance {
-    flex: 1 0;
-}
+
