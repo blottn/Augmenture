@@ -1,22 +1,19 @@
 import * as React from 'react';
 import * as $ from 'jquery';
 
-import { Card } from '../../../models/card';
-
 const FORM_TITLE_KEY = 'title';
 const FORM_CONTENT_KEY = 'content';
 
 type CreateFormProps = {
-    handler: (Card) => void; 
+    handler: (Card) => void;
 }
 
 export default class CreateForm extends React.Component<CreateFormProps, {}> {
-
     handler: (Card) => void;
 
-    constructor({handler}) {
-        super({handler});
-        this.handler = handler;
+    constructor(props) {
+        super(props);
+        this.handler = props.handler;
         const s = {};
         s[FORM_TITLE_KEY] = '';
         s[FORM_CONTENT_KEY] = '';

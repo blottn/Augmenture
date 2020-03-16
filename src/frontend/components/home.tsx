@@ -9,23 +9,20 @@ import Card from './card';
 import withNav, { NavProps } from './nav';
 import withBase from './base';
 
-type TCard = {
-    title: string;
-    content: string;
-}
-
 export type HomeProps = {
-    cards: TCard[];
+    cards: CardModel.Card[];
 }
 
-class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: boolean}> {
-    create: () => void;
+class Home extends React.Component<HomeProps, {cards: CardModel.Card[]; cardVisible: boolean}> {
+    showForm: () => void;
+
+    addCard: (card: CardModel.Card) => void;
 
     constructor(props) {
         super(props);
 
-        this.create = this.pressCreate.bind(this);
-
+        this.showForm = this.pressCreate.bind(this);
+        this.addCard = this.createCard.bind(this);
         const { cards } = props;
         this.state = {
             cards,
@@ -33,23 +30,17 @@ class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: bool
         };
     }
 
-    pressCreate(): void {
-        this.setState(({ cards, cardVisible }) => ({
-            cards,
-            cardVisible: !cardVisible,
-        }));
-    }
-
     getHomeContent(): JSX.Element[] {
         const { cards } = this.state;
-        if (cards.length == 0) {
+        if (cards.length === 0) {
             return (
                 [
                     <div key="content" className="home-placeholder">
                         <h5>
-                            You haven't created any cards yet, click the plus in the bottom right to get started!
+                            You haven&apos;t created any cards yet,
+                            click the plus in the bottom right to get started!
                         </h5>
-                    </div>
+                    </div>,
                 ]
             );
         }
@@ -60,17 +51,28 @@ class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: bool
         ));
     }
 
+    pressCreate(): void {
+        this.setState(({ cards, cardVisible }) => ({
+            cards,
+            cardVisible: !cardVisible,
+        }));
+    }
+
     static bundleSrc = 'home';
 
     createCard(card: CardModel.Card): void {
-        this.setState(({cards, ...rest}) => {
-            cards.push(card);
-            return {cards, ...rest};
+        this.setState(({ cards, ...rest }) => {
+            let newCards = cards;
+            if (!newCards) {
+                newCards = [];
+            }
+            newCards.push(card);
+            return { cards: newCards, ...rest };
         });
     }
 
     render(): JSX.Element {
-        const form = (<CreateForm handler={this.createCard.bind(this)}/>);
+        const form = (<CreateForm handler={this.addCard} />);
         let formContainerClassName;
         const { cardVisible } = this.state;
         if (cardVisible) {
@@ -88,7 +90,7 @@ class Home extends React.Component<HomeProps, {cards: TCard[]; cardVisible: bool
                         { form }
                     </div>
                 </div>
-                <CreateButton cb={this.create} />
+                <CreateButton cb={this.showForm} />
             </>
         );
     }

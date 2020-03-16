@@ -51,7 +51,10 @@ export function signup(req: Request, res: Response): void {
             res.status(409)
                 .send(`${uname} already in use`);
         } else {
-            CollectionModel.create({items: []}, (err, collection) => {
+            CollectionModel.create({ items: [] }, (collectionErr, collection) => {
+                if (collectionErr) {
+                    console.error(collectionErr);
+                }
                 UserModel.create({
                     uname,
                     email,

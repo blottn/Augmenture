@@ -26,14 +26,14 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
             loading: false,
         };
     }
-    
+
     // handlers
     signup(e): boolean {
-        this.setState(({ loading, ...rest}) => {
+        this.setState(({ loading, ...rest }) => {
             if (!loading) {
                 return { loading: true, ...rest };
             }
-            return {loading, ...rest};
+            return { loading, ...rest };
         });
 
         const form = {};
@@ -51,11 +51,11 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
             },
             error: () => {
                 // reset form
-                this.setState(({loading, ...rest}) => {
+                this.setState(({ loading, ...rest }) => {
                     if (loading) {
                         return { loading: false, ...rest };
                     }
-                    return {loading, ...rest};
+                    return { loading, ...rest };
                 });
             },
         });
@@ -63,38 +63,35 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         return false;
     }
 
-    beginLogin(e): boolean {
-        this.setState(({stage, ...rest}) => {
-            return {stage: 'login', ...rest};
-        });
+    beginLogin(): boolean {
+        this.setState(({ ...rest }) => ({ ...rest, stage: 'login' }));
         return true;
     }
 
-    beginSignup(e): boolean {
-        this.setState(({stage, ...rest}) => {
-            return {stage: 'signup', ...rest};
-        });
+    beginSignup(): boolean {
+        this.setState(({ ...rest }) => ({ ...rest, stage: 'signup' }));
         return true;
     }
 
-    back(e): boolean {
-        this.setState(({stage, ...rest}) => {
-            return {stage: 'choosing', ...rest};
-        });
+    back(): boolean {
+        this.setState(({ ...rest }) => ({ ...rest, stage: 'choosing' }));
         return true;
     }
+
     choice(): JSX.Element {
         return (
             <div className="">
                 <button
                     className="btn btn-light btn-block signup-button"
                     onClick={this.beginSignup.bind(this)}
+                    type="button"
                 >
                     Signup
                 </button>
                 <button
                     className="btn btn-primary btn-block signup-button"
                     onClick={this.beginLogin.bind(this)}
+                    type="button"
                 >
                     Login
                 </button>
@@ -113,7 +110,9 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
                 <div className="flex flex-spaced">
                     <button
                         className="btn btn-outline-secondary"
-                        onClick={this.back.bind(this)}>
+                        onClick={this.back.bind(this)}
+                        type="button"
+                    >
                             Back
                     </button>
                     <button className="btn btn-primary float-right" type="submit">
@@ -129,15 +128,17 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
             <form>
                 <h4>Login</h4>
                 <hr className="signup-bar" />
-                <input className="form-control my-1" placeholder="Display Name" type="text" name="uname"/>
-                <input className="form-control my-1" placeholder="Password" type="password" name="pw"/>
+                <input className="form-control my-1" placeholder="Display Name" type="text" name="uname" />
+                <input className="form-control my-1" placeholder="Password" type="password" name="pw" />
                 <div className="flex flex-spaced">
                     <button
+                        type="button"
                         className="btn btn-outline-secondary"
-                        onClick={this.back.bind(this)}>
+                        onClick={this.back.bind(this)}
+                    >
                             Back
                     </button>
-                    <button className="btn btn-primary">Login</button>
+                    <button type="button" className="btn btn-primary">Login</button>
                 </div>
             </form>
         );
@@ -147,13 +148,14 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         const { loading, stage } = this.state;
         if (loading) {
             return (<Pong />);
-        } else if (stage === 'choosing') {
-            return this.choice();
-        } else if (stage === 'login') {
-            return this.loginForm();
-        } else {
-            return this.signupForm();
         }
+        if (stage === 'choosing') {
+            return this.choice();
+        }
+        if (stage === 'login') {
+            return this.loginForm();
+        }
+        return this.signupForm();
     }
 
     render(): JSX.Element {
@@ -164,6 +166,3 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         );
     }
 }
-
-
-

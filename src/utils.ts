@@ -31,7 +31,7 @@ function generateCreate(app: Application, DocumentModel: Model<Document>, root =
     const route = `${root}${DocumentModel.modelName}/create`;
     app.post(route, (req: Request, resp: Response) => {
         console.log(req.body);
-        new DocumentModel(req.body).save((err) => { console.log("doc create: err: " + err); });
+        new DocumentModel(req.body).save((err) => { console.log(`doc create: err: ${err}`); });
         resp.send('OK');
     });
 }

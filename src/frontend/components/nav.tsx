@@ -5,7 +5,7 @@ export type NavProps = {
     user: string;
 }
 
-function logout() {
+function logout(): void {
     Cookies.remove('access_token');
     window.location.href = '/';
 }
@@ -25,14 +25,24 @@ const withNav = <P extends {}>(Page):
                     <p className="aug-nav-user">{ user }</p>
                     <hr className="aug-hr" />
                     <div className="aug-nav-parts">
-                        <p className="aug-nav-head">Home</p><p>🏠</p>
-                        <p className="aug-nav-head">Recents</p><p>🕙</p>
-                        <p className="aug-nav-head">Starred</p><p>✨</p>
-                        <p className="aug-nav-head">Integrations</p><p>⇥</p>
+                        <p className="aug-nav-head">Home</p>
+                        <p>
+                            <span role="img" aria-label="home icon">🏠</span>
+                        </p>
+                        <p className="aug-nav-head">Recents</p>
+                        <p>
+                            <span role="img" aria-label="clock icon">🕙</span>
+                        </p>
+                        <p className="aug-nav-head">Starred</p>
+                        <p>
+                            <span role="img" aria-label="stars icon">✨</span>
+                        </p>
+                        <p className="aug-nav-head">Integrations</p>
+                        <p>⇥</p>
                     </div>
                 </div>
                 <div className="aug-nav-footer">
-                    <button className="btn btn-outline-light" onClick={logout}>Logout</button>
+                    <button className="btn btn-outline-light" onClick={logout} type="button">Logout</button>
                 </div>
             </div>
             <div className="fill">
