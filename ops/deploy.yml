@@ -1,0 +1,22 @@
+---
+- hosts: all
+  remote_user: ansible
+  tasks:
+  - name: nginx up to date
+    become: true
+    apt:
+      name: nginx
+      state: latest
+  - name: render nginx config
+    become: true
+    template:
+      src: ./templates/nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+    notify:
+      - restart nginx
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+
