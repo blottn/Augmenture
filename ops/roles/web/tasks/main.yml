@@ -1,0 +1,4 @@
+- name: Ensure augmenture installed
+  npm:
+    name: augmenture
+    path: ~/augmenture

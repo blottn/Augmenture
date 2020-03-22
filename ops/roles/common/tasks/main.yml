@@ -1,0 +1,4 @@
+- name: Ensure npm is installed and up to date
+  script:
+    cmd: ./scripts/install-npm.sh
+    
