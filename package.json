@@ -53,8 +53,12 @@
     "webpack": "^4.41.2"
   },
   "scripts": {
-    "start": "node dist/augmenture.js",
+    "prepare": "gulp build",
+    "start": "./run.js",
     "test": "mocha"
+  },
+  "bin": {
+      "augmenture": "./run.js"
   },
   "repository": {
     "type": "git",

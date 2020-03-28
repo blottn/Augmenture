@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const gulp = require('gulp');
-const gulpTS = require('gulp-typescript');
 const gulpBabel = require('gulp-babel');
 const gulpESLint = require('gulp-eslint');
 const gulpSass = require('gulp-sass');
+const gulpTS = require('gulp-typescript');
 const project = gulpTS.createProject('tsconfig.json');
 const del = require('del');
 
