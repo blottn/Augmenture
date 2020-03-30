@@ -1,8 +1,8 @@
 {
   "name": "augmenture",
-  "version": "0.0.4",
+  "version": "0.0.10",
   "description": "Augmented Adventure builder!",
-  "main": "src/augture.js",
+  "main": "src/augture.ts",
   "dependencies": {
     "@babel/preset-react": "^7.6.3",
     "@types/react": "^16.9.5",
@@ -53,7 +53,7 @@
     "webpack": "^4.41.2"
   },
   "scripts": {
-    "postinstall": "gulp",
+    "prepare": "gulp",
     "start": "./run.js",
     "test": "mocha"
   },
