@@ -41,13 +41,13 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
             form[key] = value;
         });
 
-        $.ajax('http://localhost:3000/signup', {
+        $.ajax('/signup', {
             data: form,
             method: 'POST',
             success: (data) => {
                 Cookies.set('access_token', data.accessToken);
                 // redirect
-                window.location.assign('http://localhost:3000/home');
+                window.location.assign('/home');
             },
             error: () => {
                 // reset form

@@ -13,12 +13,12 @@ function Header<M>({ model, bundleSrc }):
             <link
                 rel="icon"
                 type="image/png"
-                href="http://localhost:3000/static/augmenture.png"
+                href="/static/augmenture.png"
             />
             {/* css */}
             <link
                 rel="stylesheet"
-                href="http://localhost:3000/static/styles/index.css"
+                href="/static/styles/index.css"
             />
             {/* icon library */}
             <link
@@ -34,7 +34,7 @@ function Header<M>({ model, bundleSrc }):
             {/* react */}
             <script src="https://unpkg.com/react@16/umd/react.development.js" />
             <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" />
-            <script src={`http://localhost:3000/static/${bundleSrc}.js`} />
+            <script src={`/static/${bundleSrc}.js`} />
             { model !== undefined ? <Inject<M> name="data" model={model} /> : null }
         </>
     );

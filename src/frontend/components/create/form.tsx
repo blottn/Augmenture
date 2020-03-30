@@ -28,7 +28,7 @@ export default class CreateForm extends React.Component<CreateFormProps, {}> {
     }
 
     handleSubmit(evt): void {
-        $.ajax('http://localhost:3000/api/card/create', {
+        $.ajax('/api/card/create', {
             method: 'POST',
             data: this.state,
         }).done(() => {
