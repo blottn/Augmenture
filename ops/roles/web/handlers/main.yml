@@ -2,7 +2,7 @@
   become: true
   service:
     name: augmenture
-    state: started
+    state: restarted
 
 - name: restart nginx
   become: true

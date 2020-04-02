@@ -3,6 +3,8 @@
   npm:
     name: augmenture
     global: yes
+    state: latest
+    version: latest
 
 - name: Generate systemd service
   become: yes
