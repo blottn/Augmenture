@@ -4,12 +4,8 @@ import * as $ from 'jquery';
 const FORM_TITLE_KEY = 'title';
 const FORM_CONTENT_KEY = 'content';
 
-type CreateFormProps = {
-    handler: (Card) => void;
-}
-
-export default class CreateForm extends React.Component<CreateFormProps, {}> {
-    handler: (Card) => void;
+export default class CreateForm extends React.Component {
+    let handler;
 
     constructor(props) {
         super(props);
@@ -21,13 +17,13 @@ export default class CreateForm extends React.Component<CreateFormProps, {}> {
         this.state = s;
     }
 
-    handleChange(evt): void {
+    handleChange(evt) {
         const update = {};
         update[evt.target.id] = evt.target.value;
         this.setState(update);
     }
 
-    handleSubmit(evt): void {
+    handleSubmit(evt) {
         $.ajax('/api/card/create', {
             method: 'POST',
             data: this.state,
@@ -38,7 +34,7 @@ export default class CreateForm extends React.Component<CreateFormProps, {}> {
         evt.preventDefault();
     }
 
-    render(): JSX.Element {
+    render() {
         return (
             <div className="create-form-container mx-4 my-4">
                 <form

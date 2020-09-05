@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 import Pong from './pong';
 
-export const Banner = (): JSX.Element => (
+export const Banner = () => (
     <div className="fill flex flex-wrap banner">
         <div>
             <h1>Augmenture</h1>
@@ -18,7 +18,7 @@ export const Banner = (): JSX.Element => (
     </div>
 );
 
-export class Signup extends React.Component<{}, { loading: boolean; stage: string}> {
+export class Signup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
     }
 
     // handlers
-    signup(e): boolean {
+    signup(e) {
         this.setState(({ loading, ...rest }) => {
             if (!loading) {
                 return { loading: true, ...rest };
@@ -63,22 +63,22 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         return false;
     }
 
-    beginLogin(): boolean {
+    beginLogin() {
         this.setState(({ ...rest }) => ({ ...rest, stage: 'login' }));
         return true;
     }
 
-    beginSignup(): boolean {
+    beginSignup() {
         this.setState(({ ...rest }) => ({ ...rest, stage: 'signup' }));
         return true;
     }
 
-    back(): boolean {
+    back() {
         this.setState(({ ...rest }) => ({ ...rest, stage: 'choosing' }));
         return true;
     }
 
-    choice(): JSX.Element {
+    choice() {
         return (
             <div className="">
                 <button
@@ -99,7 +99,7 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         );
     }
 
-    signupForm(): JSX.Element {
+    signupForm() {
         return (
             <form id="signup-form" onSubmit={this.signup.bind(this)}>
                 <h4>Signup</h4>
@@ -123,7 +123,7 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         );
     }
 
-    loginForm(): JSX.Element {
+    loginForm() {
         return (
             <form>
                 <h4>Login</h4>
@@ -144,7 +144,7 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         );
     }
 
-    renderContents(): JSX.Element {
+    renderContents() {
         const { loading, stage } = this.state;
         if (loading) {
             return (<Pong />);
@@ -158,7 +158,7 @@ export class Signup extends React.Component<{}, { loading: boolean; stage: strin
         return this.signupForm();
     }
 
-    render(): JSX.Element {
+    render() {
         return (
             <div className="flex flex-column aug-card signup-card">
                 {this.renderContents()}

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Index } from './components/index';
 
-window.onload = (): void => {
+window.onload = () => {
     ReactDOM.hydrate(<Index />, document.getElementById('root'));
 };
 export default {

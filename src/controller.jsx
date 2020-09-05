@@ -51,21 +51,15 @@ export function signup(req: Request, res: Response): void {
             res.status(409)
                 .send(`${uname} already in use`);
         } else {
-            CollectionModel.create({ items: [] }, (collectionErr, collection) => {
-                if (collectionErr) {
-                    console.error(collectionErr);
-                }
-                UserModel.create({
-                    uname,
-                    email,
-                    secret: pw,
-                    root: collection,
-                }, () => {
-                    // success
-                    const token = jwt.sign({ uname }, 'greatsecret');
-                    res.status(201)
-                        .send({ accessToken: token });
-                });
+            UserModel.create({
+                uname,
+                email,
+                secret: pw,
+            }, () => {
+                // success
+                const token = jwt.sign({ uname }, 'greatsecret');
+                res.status(201)
+                    .send({ accessToken: token });
             });
         }
     });

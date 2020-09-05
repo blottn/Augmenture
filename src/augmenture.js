@@ -9,7 +9,6 @@ import Collection from './models/collection';
 import User from './models/user';
 import { index, signup, home } from './controller';
 import { generateCRUD } from './utils';
-// import { TokenRequest } from './types.ts';
 import decodeToken from './middleware';
 
 const port = 3000;

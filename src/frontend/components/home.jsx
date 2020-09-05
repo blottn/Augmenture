@@ -9,14 +9,10 @@ import Card from './card';
 import withNav, { NavProps } from './nav';
 import withBase from './base';
 
-export type HomeProps = {
-    cards: CardModel.Card[];
-}
+class Home extends React.Component {
+    let showForm;
 
-class Home extends React.Component<HomeProps, {cards: CardModel.Card[]; cardVisible: boolean}> {
-    showForm: () => void;
-
-    addCard: (card: CardModel.Card) => void;
+    let addCard;
 
     constructor(props) {
         super(props);
@@ -30,7 +26,7 @@ class Home extends React.Component<HomeProps, {cards: CardModel.Card[]; cardVisi
         };
     }
 
-    getHomeContent(): JSX.Element[] {
+    getHomeContent() {
         const { cards } = this.state;
         if (cards.length === 0) {
             return (
@@ -51,7 +47,7 @@ class Home extends React.Component<HomeProps, {cards: CardModel.Card[]; cardVisi
         ));
     }
 
-    pressCreate(): void {
+    pressCreate() {
         this.setState(({ cards, cardVisible }) => ({
             cards,
             cardVisible: !cardVisible,
@@ -60,7 +56,7 @@ class Home extends React.Component<HomeProps, {cards: CardModel.Card[]; cardVisi
 
     static bundleSrc = 'home';
 
-    createCard(card: CardModel.Card): void {
+    createCard(card){
         this.setState(({ cards, ...rest }) => {
             let newCards = cards;
             if (!newCards) {
@@ -71,7 +67,7 @@ class Home extends React.Component<HomeProps, {cards: CardModel.Card[]; cardVisi
         });
     }
 
-    render(): JSX.Element {
+    render() {
         const form = (<CreateForm handler={this.addCard} />);
         let formContainerClassName;
         const { cardVisible } = this.state;
@@ -98,6 +94,6 @@ class Home extends React.Component<HomeProps, {cards: CardModel.Card[]; cardVisi
 
 Home.bundleSrc = 'home';
 
-export const HomePage = withNav<HomeProps>(Home);
+export const HomePage = withNav(Home);
 
-export default withBase<NavProps & HomeProps>(HomePage);
+export default withBase(HomePage);

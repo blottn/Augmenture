@@ -5,8 +5,7 @@ type HeaderProps = {
     bundleSrc: string;
 };
 
-function Header<M>({ model, bundleSrc }):
-    React.FunctionComponentElement<HeaderProps & {model?: M}> {
+function Header({ model, bundleSrc }) {
     return (
         <>
             {/* favicon */}
@@ -35,7 +34,7 @@ function Header<M>({ model, bundleSrc }):
             <script src="https://unpkg.com/react@16/umd/react.development.js" />
             <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" />
             <script src={`/static/${bundleSrc}.js`} />
-            { model !== undefined ? <Inject<M> name="data" model={model} /> : null }
+            { model !== undefined ? <Inject name="data" model={model} />}
         </>
     );
 }

@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-export default class CreateButton extends React.Component<{ cb: (() => void) }, {}> {
-    cb: () => void;
+export default class CreateButton extends React.Component {
+    let cb;
 
     constructor(props) {
         super(props);
         this.cb = props.cb;
     }
 
-    render(): JSX.Element {
+    render() {
         return (
             <div className="btn-group float">
                 <button

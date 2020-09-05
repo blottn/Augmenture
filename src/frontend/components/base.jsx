@@ -2,9 +2,7 @@ import * as React from 'react';
 
 import Header from './header';
 
-
-const withBase = <P extends {}>(Page):
-    React.FunctionComponent<P> => (model): JSX.Element => (
+const withBase = (Page) => (model) => (
         <html lang="en">
             <head>
                 <Header<P> model={model} bundleSrc={Page.bundleSrc} />

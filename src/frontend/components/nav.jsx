@@ -1,19 +1,13 @@
 import * as React from 'react';
 import * as Cookies from 'js-cookie';
 
-export type NavProps = {
-    user: string;
-}
-
 function logout(): void {
     Cookies.remove('access_token');
     window.location.href = '/';
 }
 
-const withNav = <P extends {}>(Page):
-    React.FunctionComponent<P & NavProps>
-    & {bundleSrc: string} => {
-    const nav = ({ user, ...rest }): JSX.Element => (
+const withNav = (Page) => {
+    const nav = ({ user, ...rest }) => (
         <div className="aug-nav-root">
             <div className="flex flex-column aug-nav text-center">
                 <div className="flex flex-column aug-nav-main">

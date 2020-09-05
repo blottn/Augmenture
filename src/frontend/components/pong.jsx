@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-export default class Pong extends React.Component<{}, {pong: boolean}> {
-    static Bar(): JSX.Element {
+export default class Pong {
+    static Bar() {
         return <div className="pong-change pong-sliding" />;
     }
 
-    static Ball(): JSX.Element {
+    static Ball() {
         return <div className="pong-change pong-ball" />;
     }
 
-    timer: ReturnType<typeof setTimeout>;
+    let timer;
 
     constructor(props) {
         super(props);
@@ -20,15 +20,15 @@ export default class Pong extends React.Component<{}, {pong: boolean}> {
         this.timer = setTimeout(this.pong.bind(this), 5000);
     }
 
-    componentWillUnmount(): void {
+    componentWillUnmount() {
         clearTimeout(this.timer);
     }
 
-    pong(): void {
+    pong() {
         this.setState(() => ({ pong: true }));
     }
 
-    render(): JSX.Element {
+    render() {
         const { pong } = this.state;
 
         // default classes

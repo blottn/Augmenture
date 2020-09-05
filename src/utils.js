@@ -1,22 +1,22 @@
 import { Application, Request, Response } from 'express';
 import { Model, Document } from 'mongoose';
 
-export function validateEmail(email: string): boolean {
+export function validateEmail(email) {
     if (!email) {
         return false;
     }
 
-    const parts: string[] = email.split('@');
+    const parts = email.split('@');
     if ((parts.length !== 2) || (!parts[1])) {
         return false;
     }
 
-    const domain: string = parts[1];
+    const domain = parts[1];
     if ((!domain)) {
         return false;
     }
 
-    const domainParts: string[] = domain.split('.');
+    const domainParts = domain.split('.');
     if ((domainParts.length !== 2)
         || (!domainParts[0])
         || (!domainParts[1])) {
@@ -27,18 +27,17 @@ export function validateEmail(email: string): boolean {
 }
 
 // CRUD gen
-function generateCreate(app: Application, DocumentModel: Model<Document>, root = '/api/'): void {
+function generateCreate(app, DocumentModel, root = '/api/') {
     const route = `${root}${DocumentModel.modelName}/create`;
-    app.post(route, (req: Request, resp: Response) => {
-        console.log(req.body);
+    app.post(route, (req, resp) => {
         new DocumentModel(req.body).save((err) => { console.log(`doc create: err: ${err}`); });
         resp.send('OK');
     });
 }
 
-function generateRead(app: Application, model: Model<Document>, root = '/api/'): void {
+function generateRead(app, model, root = '/api/') {
     const route = `${root}${model.modelName}/read`;
-    app.get(route, (req: Request, resp: Response) => {
+    app.get(route, (req, resp) => {
         resp.send('OK');
     });
 }
