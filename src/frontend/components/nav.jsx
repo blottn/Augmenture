@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Cookies from 'js-cookie';
 
-function logout(): void {
+function logout() {
     Cookies.remove('access_token');
     window.location.href = '/';
 }

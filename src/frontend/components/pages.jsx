@@ -1,5 +1,5 @@
-import Index from './index';
-import Home from './home';
+import Index from './index.jsx';
+import Home from './home.jsx';
 
 export default {
     '': {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import withBase from './base';
-import { Banner, Signup } from './signup';
+import withBase from './base.jsx';
+import { Banner, Signup } from './signup.jsx';
 
 export function Index() {
     return (

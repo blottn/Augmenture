@@ -7,12 +7,12 @@ import mongoose from 'mongoose';
 import cardModel from './models/card';
 import Collection from './models/collection';
 import User from './models/user';
-import { index, signup, home } from './controller';
+import { index, signup, home } from './controller.jsx';
 import { generateCRUD } from './utils';
 import decodeToken from './middleware';
 
 const port = 3000;
-const app: Application = express();
+const app = express();
 
 // static files
 app.use('/static', express.static(path.join(__dirname, './static')));
@@ -38,7 +38,7 @@ app.post('/signup', signup);
 
 generateCRUD(app, [cardModel, User, Collection]);
 
-function start(): void {
+function start() {
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);
     });

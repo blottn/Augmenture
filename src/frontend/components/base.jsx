@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Header from './header';
+import Header from './header.jsx';
 
 const withBase = (Page) => (model) => (
         <html lang="en">

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import * as CardModel from '../../models/card';
+import * as CardModel from '../../models/card.jsx';
 
-import CreateButton from './create/button';
-import CreateForm from './create/form';
+import CreateButton from './create/button.jsx';
+import CreateForm from './create/form.jsx';
 
-import Card from './card';
-import withNav, { NavProps } from './nav';
-import withBase from './base';
+import Card from './card.jsx';
+import withNav, { NavProps } from './nav.jsx';
+import withBase from './base.jsx';
 
 class Home extends React.Component {
     let showForm;

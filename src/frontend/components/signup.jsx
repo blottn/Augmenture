@@ -3,7 +3,7 @@ import * as React from 'react';
 import Typist from 'react-typist';
 import $ from 'jquery';
 
-import Pong from './pong';
+import Pong from './pong.jsx';
 
 export const Banner = () => (
     <div className="fill flex flex-wrap banner">
