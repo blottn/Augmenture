@@ -8,7 +8,6 @@ import { Request, Response } from 'express';
 import Index from './frontend/components/index.jsx';
 import Home from './frontend/components/home.jsx';
 
-import { TokenRequest } from './types';
 import { validateEmail } from './utils';
 
 import UserModel, { User } from './models/user';

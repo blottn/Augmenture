@@ -5,7 +5,7 @@ import Header from './header.jsx';
 const withBase = (Page) => (model) => (
         <html lang="en">
             <head>
-                <Header<P> model={model} bundleSrc={Page.bundleSrc} />
+                <Header model={model} bundleSrc={Page.bundleSrc} />
                 <title>Augmenture</title>
             </head>
             <body className="root">

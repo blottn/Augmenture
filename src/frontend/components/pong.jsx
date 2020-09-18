@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default class Pong {
+export default class Pong extends React.Component {
     static Bar() {
         return <div className="pong-change pong-sliding" />;
     }
@@ -8,8 +8,6 @@ export default class Pong {
     static Ball() {
         return <div className="pong-change pong-ball" />;
     }
-
-    let timer;
 
     constructor(props) {
         super(props);

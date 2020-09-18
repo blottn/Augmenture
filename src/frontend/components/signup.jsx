@@ -37,7 +37,7 @@ export class Signup extends React.Component {
         });
 
         const form = {};
-        new FormData($('#signup-form')[0] as HTMLFormElement).forEach((value, key) => {
+        new FormData($('#signup-form')[0]).forEach((value, key) => {
             form[key] = value;
         });
 

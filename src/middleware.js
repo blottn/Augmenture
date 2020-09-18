@@ -1,5 +1,6 @@
 import * as jwt from 'jsonwebtoken';
-import { Response } from 'express';
+import express from 'express';
+const { Response } = express;
 
 export default function (req, res, next) {
     if (!req.token) {

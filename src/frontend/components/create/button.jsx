@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 export default class CreateButton extends React.Component {
-    let cb;
 
     constructor(props) {
         super(props);

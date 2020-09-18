@@ -1,8 +1,27 @@
+let path = require('path');
+
+
 module.exports = {
-    entry: './src/augmenture/frontend',
+    target: 'node',
+    mode: 'development',
+    entry: [
+        './src/augmenture.js',
+    ],
     output: {
-        path: __dirname,
-        filename: './dist.js',
+        path: path.join(__dirname, 'dist/'),
     },
-    mode: 'production',
+    module: {
+        rules: [
+            {
+                test: /\.m?jsx?$/,
+                exclude: /node_modules|static/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
+                    }
+                }
+            },
+        ]
+    },
 }

@@ -1,11 +1,12 @@
-import { model, Schema, Document } from 'mongoose';
-import { User } from './user';
+import mongoose from 'mongoose';
+
+const { model, Schema } = mongoose;
 
 export const CardName = 'card';
 
 export const CardSchema = new Schema({
-    title,
-    content,
+    title: String,
+    content: String,
 });
 
 

@@ -1,5 +1,7 @@
-import { model, Schema, Document } from 'mongoose';
-import CardModel, { Card } from './card';
+import mongoose from 'mongoose';
+import CardModel from './card.js';
+
+const { model, Schema } = mongoose;
 
 export const CollectionName = 'collection';
 

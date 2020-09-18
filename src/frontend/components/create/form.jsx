@@ -5,7 +5,6 @@ const FORM_TITLE_KEY = 'title';
 const FORM_CONTENT_KEY = 'content';
 
 export default class CreateForm extends React.Component {
-    let handler;
 
     constructor(props) {
         super(props);

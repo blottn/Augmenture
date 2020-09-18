@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as CardModel from '../../models/card.jsx';
+import * as CardModel from '../../models/card.js';
 
 import CreateButton from './create/button.jsx';
 import CreateForm from './create/form.jsx';
@@ -10,9 +10,6 @@ import withNav, { NavProps } from './nav.jsx';
 import withBase from './base.jsx';
 
 class Home extends React.Component {
-    let showForm;
-
-    let addCard;
 
     constructor(props) {
         super(props);
@@ -53,8 +50,6 @@ class Home extends React.Component {
             cardVisible: !cardVisible,
         }));
     }
-
-    static bundleSrc = 'home';
 
     createCard(card){
         this.setState(({ cards, ...rest }) => {

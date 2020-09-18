@@ -1,5 +1,7 @@
-import { Application, Request, Response } from 'express';
-import { Model, Document } from 'mongoose';
+import mongoose from 'mongoose';
+import express from 'express';
+const { Application, Request, Response } = express;
+const { Model } = mongoose;
 
 export function validateEmail(email) {
     if (!email) {
@@ -42,22 +44,22 @@ function generateRead(app, model, root = '/api/') {
     });
 }
 
-function generateUpdate(app: Application, model: Model<Document>, root = '/api/'): void {
+function generateUpdate(app, model, root = '/api/') {
     const route = `${root}${model.modelName}/update`;
-    app.put(route, (req: Request, resp: Response) => {
+    app.put(route, (req, resp) => {
         resp.send('OK');
     });
 }
 
-function generateDelete(app: Application, model: Model<Document>, root = '/api/'): void {
+function generateDelete(app, model, root = '/api/') {
     const route = `${root}${model.modelName}/delete`;
-    app.delete(route, (req: Request, resp: Response) => {
+    app.delete(route, (req, resp) => {
         resp.send('OK');
     });
 }
 
-export function generateCRUD(app: Application, models: Model<Document>[]): void {
-    models.map((model: Model<Document>) => {
+export function generateCRUD(app, models) {
+    models.map((model) => {
         generateCreate(app, model);
         generateRead(app, model);
         generateUpdate(app, model);

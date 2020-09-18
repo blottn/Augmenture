@@ -1,19 +1,18 @@
 import path from 'path';
 import bearertoken from 'express-bearer-token';
 
-import express, { Application } from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 
-import cardModel from './models/card';
-import Collection from './models/collection';
-import User from './models/user';
+import cardModel from './models/card.js';
+import Collection from './models/collection.js';
+import User from './models/user.js';
 import { index, signup, home } from './controller.jsx';
-import { generateCRUD } from './utils';
-import decodeToken from './middleware';
+import { generateCRUD } from './utils.js';
+import decodeToken from './middleware.js';
 
 const port = 3000;
 const app = express();
-
 // static files
 app.use('/static', express.static(path.join(__dirname, './static')));
 app.use(bearertoken({
@@ -28,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // views
-// app.set('view engine', 'pug')
+//app.set('view engine', 'pug')
 // app.set('views', path.join(__dirname, './views'))
 
 // configure routes
