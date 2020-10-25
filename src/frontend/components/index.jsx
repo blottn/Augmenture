@@ -3,7 +3,7 @@ import * as React from 'react';
 import withBase from './base.jsx';
 import { Banner, Signup } from './signup.jsx';
 
-export function Index() {
+export default function Index() {
     return (
         <>
             <div className="flex-balance">
@@ -15,7 +15,3 @@ export function Index() {
         </>
     );
 }
-
-Index.bundleSrc = 'index';
-
-export default withBase(Index);

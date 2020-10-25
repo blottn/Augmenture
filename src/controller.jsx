@@ -5,8 +5,7 @@ import * as React from 'react';
 
 import { Request, Response } from 'express';
 
-import Index from './frontend/components/index.jsx';
-import Home from './frontend/components/home.jsx';
+import { BaseComponent } from './frontend/components/base.jsx';
 
 import { validateEmail } from './utils';
 
@@ -14,7 +13,7 @@ import UserModel, { User } from './models/user';
 import CollectionModel from './models/collection';
 
 export function index(req, res) {
-    res.send(ReactDOMServer.renderToString(<Index />));
+    res.send(ReactDOMServer.renderToString(<BaseComponent elementSrc="./static/index.js" />));
 }
 
 export function home(req, res) {
@@ -24,7 +23,10 @@ export function home(req, res) {
             res.redirect('/');
         } else {
             console.log(user);
-            res.send(ReactDOMServer.renderToString(<Home user={user.uname} cards={[]} />));
+            res.send(ReactDOMServer.renderToString(
+                <BaseComponent elementSrc="./static/home.js" data={{user: user.uname, cards:[]}}/>
+         //       <Home user={user.uname} cards={[]} /> 
+            ));
         }
     });
 }
