@@ -22,14 +22,11 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: mkdir dist
-      - run: sudo npm install --global gulp-cli
       - run: npm install
-      - run: npm rebuild node-sass
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: gulp
+      - run: npm run build
