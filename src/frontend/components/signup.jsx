@@ -82,7 +82,7 @@ export class Signup extends React.Component {
         return (
             <div className="">
                 <button
-                    className="btn btn-light btn-block signup-button"
+                    className="btn btn-secondary btn-block signup-button"
                     onClick={this.beginSignup.bind(this)}
                     type="button"
                 >

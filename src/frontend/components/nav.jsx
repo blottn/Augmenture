@@ -26,7 +26,7 @@ const withNav = (Page) => {
                     </div>
                 </div>
                 <div className="aug-nav-footer">
-                    <button className="btn btn-outline-light" onClick={logout} type="button">Logout</button>
+                    <button className="btn btn-outline-secondary" onClick={logout} type="button">Logout</button>
                 </div>
             </div>
             <div className="fill">
