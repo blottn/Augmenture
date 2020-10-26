@@ -19,20 +19,10 @@ const withNav = (Page) => {
                     <p className="aug-nav-user">{ user }</p>
                     <hr className="aug-hr" />
                     <div className="aug-nav-parts">
-                        <p className="aug-nav-head">Home</p>
-                        <p>
-                            <span role="img" aria-label="home icon">🏠</span>
-                        </p>
-                        <p className="aug-nav-head">Recents</p>
-                        <p>
-                            <span role="img" aria-label="clock icon">🕙</span>
-                        </p>
-                        <p className="aug-nav-head">Starred</p>
-                        <p>
-                            <span role="img" aria-label="stars icon">✨</span>
-                        </p>
-                        <p className="aug-nav-head">Integrations</p>
-                        <p>⇥</p>
+                        <p className="aug-nav-head">HOME</p>
+                        <p className="aug-nav-head">RECENTS</p>
+                        <p className="aug-nav-head">STARRED</p>
+                        <p className="aug-nav-head">INTEGRATIONS</p>
                     </div>
                 </div>
                 <div className="aug-nav-footer">
