@@ -62,6 +62,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "node ./dist/augmenture.js",
+    "dev": "node ./dist/augmenture.js --dev true --static-dir=\"frontend\"",
     "test": "mocha"
   },
   "bin": {

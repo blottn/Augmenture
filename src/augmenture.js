@@ -9,7 +9,7 @@ import { ArgumentParser } from 'argparse';
 import cardModel from './models/card.js';
 import Collection from './models/collection.js';
 import User from './models/user.js';
-import { index, signup, home } from './controller.jsx';
+import { AugmentureRouter } from './controller.jsx';
 import { generateCRUD } from './utils.js';
 import decodeToken from './middleware.js';
 
@@ -21,8 +21,11 @@ const parser = new ArgumentParser({
 parser.add_argument('-v', '--version', { action: 'version', version: '0.0.11' });
 parser.add_argument('--port', { help: 'Port to listen on', default: 3000 });
 parser.add_argument('--static-dir', { help: 'Static file directory', default: './static'});
- 
-const { port, static_dir } = parser.parse_args();
+parser.add_argument('--dev', { help: 'Run in dev mode', default: false});
+
+
+const { port, static_dir, dev } = parser.parse_args();
+
 const app = express();
 
 // static files
@@ -39,9 +42,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // configure routes
-app.get('/', index);
-app.get('/home', decodeToken, home);
-app.post('/signup', signup);
+app.use(new AugmentureRouter(dev));
 
 generateCRUD(app, [cardModel, User, Collection]);
 

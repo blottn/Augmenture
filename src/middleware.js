@@ -2,7 +2,11 @@ import * as jwt from 'jsonwebtoken';
 import express from 'express';
 const { Response } = express;
 
-export default function (req, res, next) {
+export default function decodeToken(dev, req, res, next) {
+    if (dev) {
+        req.uname = 'dev';
+        next();
+    }
     if (!req.token) {
         res.redirect('/');
     } else {
@@ -15,4 +19,8 @@ export default function (req, res, next) {
                 .end();
         }
     }
+}
+
+export function getDecodeToken(dev) {
+    return (req, res, next) => decodeToken(dev, req, res, next);
 }
